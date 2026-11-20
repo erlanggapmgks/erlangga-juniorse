@@ -215,6 +215,55 @@
 
     .cta-primary { background: var(--accent); color: var(--accent-ink); transition: opacity .2s; }
     .cta-primary:hover { opacity: .9; }
+
+    /* ── Experience timeline ── */
+    .exp-dot-active {
+      background: var(--accent);
+      box-shadow: 0 0 0 3px var(--bg), 0 0 0 5px var(--accent);
+      animation: dot-pulse 2s ease-in-out infinite;
+    }
+    @keyframes dot-pulse {
+      0%,100% { box-shadow: 0 0 0 3px var(--bg), 0 0 0 5px var(--accent); }
+      50%      { box-shadow: 0 0 0 3px var(--bg), 0 0 0 7px rgba(0,255,178,0); }
+    }
+    html.light .exp-dot-active {
+      background: #166534;
+      box-shadow: 0 0 0 3px var(--bg), 0 0 0 5px #166534;
+      animation: dot-pulse-light 2s ease-in-out infinite;
+    }
+    @keyframes dot-pulse-light {
+      0%,100% { box-shadow: 0 0 0 3px var(--bg), 0 0 0 5px #166534; }
+      50%      { box-shadow: 0 0 0 3px var(--bg), 0 0 0 7px rgba(22,101,52,0); }
+    }
+
+    /* Accordion */
+    .exp-header { transition: background .2s; }
+    .exp-header:hover { background: rgba(0,255,178,.03) !important; }
+    html.light .exp-header:hover { background: rgba(22,101,52,.04) !important; }
+
+    .exp-arrow {
+      width: 34px; height: 34px; flex-shrink: 0;
+      border: 1px solid var(--border-strong); border-radius: 4px;
+      display: flex; align-items: center; justify-content: center;
+      transition: background .2s, border-color .2s, transform .3s;
+    }
+    .exp-entry.open .exp-arrow {
+      background: var(--accent); border-color: var(--accent);
+      transform: rotate(90deg);
+    }
+    .exp-entry.open .exp-arrow path { stroke: var(--accent-ink) !important; }
+
+    .exp-detail {
+      max-height: 0; overflow: hidden; opacity: 0;
+      transition: max-height .45s cubic-bezier(.4,0,.2,1), opacity .3s ease;
+    }
+    .exp-entry.open .exp-detail { max-height: 600px; opacity: 1; }
+
+    .exp-entry.open .exp-dot {
+      background: var(--accent) !important;
+      border-color: var(--accent) !important;
+    }
+    .exp-card { transition: background-color .4s ease; }
   </style>
 </head>
 <body>
@@ -233,10 +282,11 @@
       <div class="flex items-center gap-5 lg:gap-8">
         <!-- Desktop nav -->
         <nav class="hidden md:flex items-center gap-8 lg:gap-10" aria-label="Main navigation">
-          <a href="#home"     class="nav-link text-xs tracking-wider flex items-center gap-1.5" data-section="home"><span class="num font-mono text-xs">01.</span> Home</a>
-          <a href="#profile"  class="nav-link text-xs tracking-wider flex items-center gap-1.5" data-section="profile"><span class="num font-mono text-xs">02.</span> Profile</a>
-          <a href="#projects" class="nav-link text-xs tracking-wider flex items-center gap-1.5" data-section="projects"><span class="num font-mono text-xs">03.</span> My Project</a>
-          <a href="#contact"  class="nav-link text-xs tracking-wider flex items-center gap-1.5" data-section="contact"><span class="num font-mono text-xs">04.</span> Contact</a>
+          <a href="#home"       class="nav-link text-xs tracking-wider flex items-center gap-1.5" data-section="home"><span class="num font-mono text-xs">01.</span> Home</a>
+          <a href="#profile"   class="nav-link text-xs tracking-wider flex items-center gap-1.5" data-section="profile"><span class="num font-mono text-xs">02.</span> Profile</a>
+          <a href="#experience"class="nav-link text-xs tracking-wider flex items-center gap-1.5" data-section="experience"><span class="num font-mono text-xs">03.</span> Experience</a>
+          <a href="#projects"  class="nav-link text-xs tracking-wider flex items-center gap-1.5" data-section="projects"><span class="num font-mono text-xs">04.</span> My Project</a>
+          <a href="#contact"   class="nav-link text-xs tracking-wider flex items-center gap-1.5" data-section="contact"><span class="num font-mono text-xs">05.</span> Contact</a>
         </nav>
 
         <!-- Theme toggle -->
@@ -263,10 +313,11 @@
 
     <!-- Mobile dropdown menu -->
     <div id="mobile-menu" class="md:hidden flex-col gap-5 px-5 sm:px-8 pt-6 pb-8 t-bg" style="border-top: 1px solid var(--border);">
-      <a href="#home"     class="nav-link text-sm flex items-center gap-2"><span class="num font-mono text-xs">01.</span> Home</a>
-      <a href="#profile"  class="nav-link text-sm flex items-center gap-2"><span class="num font-mono text-xs">02.</span> Profile</a>
-      <a href="#projects" class="nav-link text-sm flex items-center gap-2"><span class="num font-mono text-xs">03.</span> My Project</a>
-      <a href="#contact"  class="nav-link text-sm flex items-center gap-2"><span class="num font-mono text-xs">04.</span> Contact</a>
+      <a href="#home"       class="nav-link text-sm flex items-center gap-2"><span class="num font-mono text-xs">01.</span> Home</a>
+      <a href="#profile"   class="nav-link text-sm flex items-center gap-2"><span class="num font-mono text-xs">02.</span> Profile</a>
+      <a href="#experience"class="nav-link text-sm flex items-center gap-2"><span class="num font-mono text-xs">03.</span> Experience</a>
+      <a href="#projects"  class="nav-link text-sm flex items-center gap-2"><span class="num font-mono text-xs">04.</span> My Project</a>
+      <a href="#contact"   class="nav-link text-sm flex items-center gap-2"><span class="num font-mono text-xs">05.</span> Contact</a>
     </div>
   </header>
 
@@ -381,19 +432,208 @@
   </section>
 
 
+  <!-- ══════════════ EXPERIENCE ══════════════ -->
+  <section id="experience" class="relative py-16 sm:py-20 lg:py-28" style="border-top:1px solid var(--border-soft);">
+    <div class="max-w-screen-xl mx-auto px-5 sm:px-8 w-full">
+      <div class="flex items-start gap-4 sm:gap-6">
+
+        <div class="hidden sm:flex flex-col items-center gap-2 mt-1 shrink-0">
+          <span class="t-accent text-xs font-mono">03</span>
+          <span class="section-label">Experience</span>
+        </div>
+
+        <div class="flex-1">
+          <div class="reveal">
+            <span class="sm:hidden t-accent text-xs font-mono mb-3 block">03 — Experience</span>
+            <p class="t-accent text-xs tracking-widest uppercase mb-4 sm:mb-5">Work History</p>
+            <h2 class="font-black leading-tight mb-12 sm:mb-16 t-text" style="font-size: clamp(2rem, 6vw, 4.5rem);">
+              Where I've<br/><span class="t-accent">grown my craft.</span>
+            </h2>
+          </div>
+
+          <!-- Timeline -->
+          <div class="reveal relative" style="transition-delay:.1s;">
+
+            <!-- Vertical line (desktop) -->
+            <div class="absolute left-0 top-0 bottom-0 w-px hidden sm:block" style="background: var(--border); margin-left: 5px;"></div>
+
+            <div class="space-y-0" id="exp-list">
+
+              <!-- ── Entry 1: Telkom University ── -->
+              <div class="exp-entry relative" data-exp="1">
+                <div class="sm:pl-10">
+                  <div class="exp-dot hidden sm:flex absolute left-0 top-7 w-3 h-3 rounded-full" style="background: var(--border); border: 2px solid var(--border-strong);"></div>
+
+                  <!-- Clickable header -->
+                  <div class="exp-header exp-card cursor-pointer flex items-center justify-between gap-4 px-5 sm:px-6 py-5"
+                       style="border: 1px solid var(--border); background: var(--bg-elevated); border-bottom: none;">
+                    <div class="flex flex-col sm:flex-row sm:items-center gap-2 sm:gap-6 flex-1 min-w-0">
+                      <div class="min-w-0">
+                        <span class="t-accent text-xs tracking-widest uppercase font-mono">Internship</span>
+                        <h3 class="t-text font-bold text-base sm:text-lg mt-0.5 truncate">Administration Staff</h3>
+                        <p class="t-muted text-sm mt-0.5">Telkom University Surabaya <span class="t-faint">· Surabaya, ID</span></p>
+                      </div>
+                      <span class="exp-date text-xs font-mono whitespace-nowrap px-3 py-1.5 rounded-sm self-start sm:self-center shrink-0"
+                            style="border: 1px solid var(--border); color: var(--text-faint); background: var(--bg);">Jul 2021 – Nov 2021</span>
+                    </div>
+                    <div class="exp-arrow shrink-0">
+                      <svg width="13" height="13" viewBox="0 0 14 14" fill="none" aria-hidden="true">
+                        <path d="M2 7h10M8 3l4 4-4 4" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round" style="stroke: var(--text-muted);"/>
+                      </svg>
+                    </div>
+                  </div>
+
+                  <!-- Dropdown detail -->
+                  <div class="exp-detail" style="border: 1px solid var(--border); border-top: none; background: var(--bg-elevated);">
+                    <div class="px-5 sm:px-6 pb-5 pt-4">
+                      <p class="t-dim text-xs uppercase tracking-widest mb-3 font-mono">// LPPM — Lembaga Penelitian dan Pengabdian Kepada Masyarakat</p>
+                      <ul class="space-y-2.5">
+                        <li class="flex gap-2.5 t-muted text-sm leading-relaxed"><span class="t-accent mt-1.5 shrink-0" style="font-size:8px;">▸</span>Analyzed report data from LPPM then printed and submitted to lecturers at ITTS.</li>
+                        <li class="flex gap-2.5 t-muted text-sm leading-relaxed"><span class="t-accent mt-1.5 shrink-0" style="font-size:8px;">▸</span>Input LPPM research and service report data into the "Igracias" ITTS website.</li>
+                        <li class="flex gap-2.5 t-muted text-sm leading-relaxed"><span class="t-accent mt-1.5 shrink-0" style="font-size:8px;">▸</span>Designed website content for the ITTS LPPM website.</li>
+                      </ul>
+                    </div>
+                  </div>
+                </div>
+              </div>
+
+              <!-- ── Entry 2: Soundclub / Supervybe ── -->
+              <div class="exp-entry relative" data-exp="2">
+                <div class="sm:pl-10">
+                  <div class="exp-dot hidden sm:flex absolute left-0 top-7 w-3 h-3 rounded-full" style="background: var(--border); border: 2px solid var(--border-strong);"></div>
+
+                  <div class="exp-header exp-card cursor-pointer flex items-center justify-between gap-4 px-5 sm:px-6 py-5"
+                       style="border: 1px solid var(--border); background: var(--bg-elevated); border-top: none; border-bottom: none;">
+                    <div class="flex flex-col sm:flex-row sm:items-center gap-2 sm:gap-6 flex-1 min-w-0">
+                      <div class="min-w-0">
+                        <span class="t-accent text-xs tracking-widest uppercase font-mono">Full Time</span>
+                        <h3 class="t-text font-bold text-base sm:text-lg mt-0.5 truncate">Junior Quality Assurance</h3>
+                        <p class="t-muted text-sm mt-0.5">Soundclub Ltd / Supervybe <span class="t-faint">· Greater London, UK</span></p>
+                      </div>
+                      <span class="exp-date text-xs font-mono whitespace-nowrap px-3 py-1.5 rounded-sm self-start sm:self-center shrink-0"
+                            style="border: 1px solid var(--border); color: var(--text-faint); background: var(--bg);">Apr 2022 – Jan 2023</span>
+                    </div>
+                    <div class="exp-arrow shrink-0">
+                      <svg width="13" height="13" viewBox="0 0 14 14" fill="none" aria-hidden="true">
+                        <path d="M2 7h10M8 3l4 4-4 4" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round" style="stroke: var(--text-muted);"/>
+                      </svg>
+                    </div>
+                  </div>
+
+                  <div class="exp-detail" style="border: 1px solid var(--border); border-top: none; background: var(--bg-elevated);">
+                    <div class="px-5 sm:px-6 pb-5 pt-4">
+                      <p class="t-dim text-xs uppercase tracking-widest mb-3 font-mono">// Supervybe (prev. Festyful – Soundclub)</p>
+                      <ul class="space-y-2.5">
+                        <li class="flex gap-2.5 t-muted text-sm leading-relaxed"><span class="t-accent mt-1.5 shrink-0" style="font-size:8px;">▸</span>Set up and maintained test environments for web and mobile applications.</li>
+                        <li class="flex gap-2.5 t-muted text-sm leading-relaxed"><span class="t-accent mt-1.5 shrink-0" style="font-size:8px;">▸</span>Understood product features and their underlying technical behaviour.</li>
+                        <li class="flex gap-2.5 t-muted text-sm leading-relaxed"><span class="t-accent mt-1.5 shrink-0" style="font-size:8px;">▸</span>Developed test cases including detailed test results for web and app platforms.</li>
+                        <li class="flex gap-2.5 t-muted text-sm leading-relaxed"><span class="t-accent mt-1.5 shrink-0" style="font-size:8px;">▸</span>Performed manual testing of web and app products with comprehensive bug reporting.</li>
+                      </ul>
+                    </div>
+                  </div>
+                </div>
+              </div>
+
+              <!-- ── Entry 3: Cherrypick Studio ── -->
+              <div class="exp-entry relative" data-exp="3">
+                <div class="sm:pl-10">
+                  <div class="exp-dot hidden sm:flex absolute left-0 top-7 w-3 h-3 rounded-full" style="background: var(--border); border: 2px solid var(--border-strong);"></div>
+
+                  <div class="exp-header exp-card cursor-pointer flex items-center justify-between gap-4 px-5 sm:px-6 py-5"
+                       style="border: 1px solid var(--border); background: var(--bg-elevated); border-top: none; border-bottom: none;">
+                    <div class="flex flex-col sm:flex-row sm:items-center gap-2 sm:gap-6 flex-1 min-w-0">
+                      <div class="min-w-0">
+                        <span class="t-accent text-xs tracking-widest uppercase font-mono">Internship</span>
+                        <h3 class="t-text font-bold text-base sm:text-lg mt-0.5 truncate">Software Engineer</h3>
+                        <p class="t-muted text-sm mt-0.5">Cherrypick Studio <span class="t-faint">· Malang, ID</span></p>
+                      </div>
+                      <span class="exp-date text-xs font-mono whitespace-nowrap px-3 py-1.5 rounded-sm self-start sm:self-center shrink-0"
+                            style="border: 1px solid var(--border); color: var(--text-faint); background: var(--bg);">Feb 2026 – Jun 2026</span>
+                    </div>
+                    <div class="exp-arrow shrink-0">
+                      <svg width="13" height="13" viewBox="0 0 14 14" fill="none" aria-hidden="true">
+                        <path d="M2 7h10M8 3l4 4-4 4" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round" style="stroke: var(--text-muted);"/>
+                      </svg>
+                    </div>
+                  </div>
+
+                  <div class="exp-detail" style="border: 1px solid var(--border); border-top: none; background: var(--bg-elevated);">
+                    <div class="px-5 sm:px-6 pb-5 pt-4">
+                      <ul class="space-y-2.5">
+                        <li class="flex gap-2.5 t-muted text-sm leading-relaxed"><span class="t-accent mt-1.5 shrink-0" style="font-size:8px;">▸</span>Implemented and translated UI/UX designs into responsive, functional web interfaces for the Cherrypick Marketplace.</li>
+                        <li class="flex gap-2.5 t-muted text-sm leading-relaxed"><span class="t-accent mt-1.5 shrink-0" style="font-size:8px;">▸</span>Developed and customised web pages using Webflow, React.js, Blade PHP, HTML, CSS, and JavaScript.</li>
+                        <li class="flex gap-2.5 t-muted text-sm leading-relaxed"><span class="t-accent mt-1.5 shrink-0" style="font-size:8px;">▸</span>Converted Figma design prototypes into production-ready web interfaces.</li>
+                        <li class="flex gap-2.5 t-muted text-sm leading-relaxed"><span class="t-accent mt-1.5 shrink-0" style="font-size:8px;">▸</span>Ensured responsive layouts, cross-device compatibility, and consistency with design specs.</li>
+                        <li class="flex gap-2.5 t-muted text-sm leading-relaxed"><span class="t-accent mt-1.5 shrink-0" style="font-size:8px;">▸</span>Collaborated with the development team to implement, refine, and maintain website features across multiple projects.</li>
+                      </ul>
+                    </div>
+                  </div>
+                </div>
+              </div>
+
+              <!-- ── Entry 4: Leapfrog ── -->
+              <div class="exp-entry relative" data-exp="4">
+                <div class="sm:pl-10">
+                  <div class="hidden sm:flex absolute left-0 top-7 w-3 h-3 rounded-full exp-dot-active"></div>
+
+                  <div class="exp-header exp-card cursor-pointer flex items-center justify-between gap-4 px-5 sm:px-6 py-5"
+                       style="border: 1px solid var(--border); background: var(--bg-elevated); border-top: none; border-bottom: none;">
+                    <div class="flex flex-col sm:flex-row sm:items-center gap-2 sm:gap-6 flex-1 min-w-0">
+                      <div class="min-w-0">
+                        <span class="t-accent text-xs tracking-widest uppercase font-mono">Freelance</span>
+                        <h3 class="t-text font-bold text-base sm:text-lg mt-0.5 truncate">Junior Software Engineer</h3>
+                        <p class="t-muted text-sm mt-0.5">Leapfrog <span class="t-faint">· Malang, ID</span></p>
+                      </div>
+                      <span class="text-xs font-mono whitespace-nowrap px-3 py-1.5 rounded-sm self-start sm:self-center shrink-0 flex items-center gap-1.5"
+                            style="border: 1px solid var(--accent); color: var(--accent); background: var(--bg);">
+                        <span class="avail-dot" style="width:6px;height:6px;flex-shrink:0;"></span>
+                        Jul 2023 – Present
+                      </span>
+                    </div>
+                    <div class="exp-arrow shrink-0">
+                      <svg width="13" height="13" viewBox="0 0 14 14" fill="none" aria-hidden="true">
+                        <path d="M2 7h10M8 3l4 4-4 4" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round" style="stroke: var(--text-muted);"/>
+                      </svg>
+                    </div>
+                  </div>
+
+                  <div class="exp-detail" style="border: 1px solid var(--border); border-top: none; background: var(--bg-elevated);">
+                    <div class="px-5 sm:px-6 pb-5 pt-4">
+                      <ul class="space-y-2.5">
+                        <li class="flex gap-2.5 t-muted text-sm leading-relaxed"><span class="t-accent mt-1.5 shrink-0" style="font-size:8px;">▸</span>Built and deployed a web application from the ground up, focusing on functionality, responsive UI, and overall user experience.</li>
+                        <li class="flex gap-2.5 t-muted text-sm leading-relaxed"><span class="t-accent mt-1.5 shrink-0" style="font-size:8px;">▸</span>Developing a full-stack internal dashboard for a private tax services company, including frontend interfaces, backend services, database integration, and business logic.</li>
+                        <li class="flex gap-2.5 t-muted text-sm leading-relaxed"><span class="t-accent mt-1.5 shrink-0" style="font-size:8px;">▸</span>Translated business requirements into scalable and user-friendly web application features.</li>
+                        <li class="flex gap-2.5 t-muted text-sm leading-relaxed"><span class="t-accent mt-1.5 shrink-0" style="font-size:8px;">▸</span>Managed the development process from system design and implementation to testing, debugging, and continuous improvement.</li>
+                      </ul>
+                    </div>
+                  </div>
+                </div>
+              </div>
+
+              <!-- Bottom border closer -->
+              <div style="border-bottom: 1px solid var(--border);"></div>
+
+            </div><!-- /space-y-0 -->
+          </div><!-- /timeline reveal -->
+        </div>
+      </div>
+    </div>
+  </section>
+
+
   <!-- ══════════════ PROJECTS ══════════════ -->
   <section id="projects" class="relative py-16 sm:py-20 lg:py-28" style="border-top:1px solid var(--border-soft);">
     <div class="max-w-screen-xl mx-auto px-5 sm:px-8 w-full">
       <div class="flex items-start gap-4 sm:gap-6">
 
         <div class="hidden sm:flex flex-col items-center gap-2 mt-1 shrink-0">
-          <span class="t-accent text-xs font-mono">03</span>
+          <span class="t-accent text-xs font-mono">04</span>
           <span class="section-label">My Project</span>
         </div>
 
         <div class="flex-1">
           <div class="reveal">
-            <span class="sm:hidden t-accent text-xs font-mono mb-3 block">03 — My Project</span>
+            <span class="sm:hidden t-accent text-xs font-mono mb-3 block">04 — My Project</span>
             <p class="t-accent text-xs tracking-widest uppercase mb-4 sm:mb-5">Selected Work</p>
             <h2 class="font-black leading-tight mb-10 sm:mb-14 lg:mb-16 t-text" style="font-size: clamp(2rem, 6vw, 4.5rem);">
               Real products,<br/><span class="t-accent">built from scratch.</span>
@@ -484,7 +724,7 @@
       <div class="grid grid-cols-1 lg:grid-cols-2 gap-12 lg:gap-16 items-start lg:items-center">
 
         <div class="reveal">
-          <span class="sm:hidden t-accent text-xs font-mono mb-3 block">04 — Contact</span>
+          <span class="sm:hidden t-accent text-xs font-mono mb-3 block">05 — Contact</span>
           <p class="t-accent text-xs tracking-widest uppercase mb-5 sm:mb-6">Have a project in mind?</p>
           <h2 class="font-black leading-tight mb-6 sm:mb-8 t-text" style="font-size: clamp(2rem, 6vw, 4rem);">
             Let's build something<br/><span class="t-accent">meaningful.</span>
@@ -535,14 +775,13 @@
 
   <!-- ══════════════ JAVASCRIPT ══════════════ -->
   <script>
-    // ── Theme: apply saved choice ASAP ───────────────────────
+    // ── Theme: dark by default ───────────────────────────────
     (function initTheme() {
       const saved = localStorage.getItem('theme');
       if (saved === 'light') {
         document.documentElement.classList.add('light');
-      } else if (!saved && window.matchMedia && window.matchMedia('(prefers-color-scheme: light)').matches) {
-        document.documentElement.classList.add('light');
       }
+      // No saved preference → stay dark (default)
     })();
 
     const themeToggle = document.getElementById('theme-toggle');
@@ -611,6 +850,15 @@
         const isOpen = row.classList.contains('open');
         document.querySelectorAll('.project-row').forEach(r => r.classList.remove('open'));
         if (!isOpen) row.classList.add('open');
+      });
+    });
+
+    // ── Experience accordion ──────────────────────────────────
+    document.querySelectorAll('.exp-entry').forEach(entry => {
+      entry.querySelector('.exp-header').addEventListener('click', () => {
+        const isOpen = entry.classList.contains('open');
+        document.querySelectorAll('.exp-entry').forEach(e => e.classList.remove('open'));
+        if (!isOpen) entry.classList.add('open');
       });
     });
 
