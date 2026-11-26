@@ -3,9 +3,41 @@
 <head>
   <meta charset="UTF-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+
+  <!-- ══ Primary SEO ══ -->
   <title>Erlangga Dwi Ananda Pamungkas — Junior Software Engineer</title>
-  <script src="https://cdn.tailwindcss.com"></script>
+  <meta name="description" content="Portfolio of Erlangga Dwi Ananda Pamungkas, a Junior Software Engineer based in Indonesia. Specialising in React.js, Tailwind CSS, Node.js, and building thoughtful digital products." />
+  <meta name="keywords" content="Erlangga Dwi Ananda Pamungkas, Junior Software Engineer, React developer, frontend developer, Indonesia, Binus University, web developer portfolio" />
+  <meta name="author" content="Erlangga Dwi Ananda Pamungkas" />
+  <meta name="robots" content="index, follow" />
+  <link rel="canonical" href="https://erlangga.dev/" />
+
+  <!-- ══ Open Graph (Facebook / LinkedIn) ══ -->
+  <meta property="og:type"        content="website" />
+  <meta property="og:url"         content="https://erlangga.dev/" />
+  <meta property="og:title"       content="Erlangga Dwi Ananda Pamungkas — Junior Software Engineer" />
+  <meta property="og:description" content="Portfolio of Erlangga Dwi Ananda Pamungkas — building thoughtful digital systems with React.js, Tailwind CSS, and Node.js." />
+  <meta property="og:image"       content="https://erlangga.dev/og-image.png" />
+  <meta property="og:locale"      content="en_US" />
+  <meta property="og:site_name"   content="Erlangga Pamungkas" />
+
+  <!-- ══ Twitter Card ══ -->
+  <meta name="twitter:card"        content="summary_large_image" />
+  <meta name="twitter:url"         content="https://erlangga.dev/" />
+  <meta name="twitter:title"       content="Erlangga Dwi Ananda Pamungkas — Junior Software Engineer" />
+  <meta name="twitter:description" content="Portfolio of Erlangga Dwi Ananda Pamungkas — building thoughtful digital systems with React.js, Tailwind CSS, and Node.js." />
+  <meta name="twitter:image"       content="https://erlangga.dev/og-image.png" />
+
+  <!-- ══ Theme colour (browser chrome) ══ -->
+  <meta name="theme-color" content="#0A0A0A" />
+
+  <!-- ══ Fonts ══ -->
+  <link rel="preconnect" href="https://fonts.googleapis.com" />
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
   <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700;800;900&display=swap" rel="stylesheet" />
+
+  <!-- ══ Tailwind CDN + config ══ -->
+  <script src="https://cdn.tailwindcss.com"></script>
   <script>
     tailwind.config = {
       theme: {
@@ -17,254 +49,34 @@
       },
     }
   </script>
-  <style>
-    /* ══════════════ THEME TOKENS ══════════════ */
-    :root {
-      --bg:            #0A0A0A;
-      --bg-elevated:   #0D0D0D;
-      --bg-header:     #141414;
-      --border:        #1E1E1E;
-      --border-soft:   #1A1A1A;
-      --border-strong: #2A2A2A;
-      --text:          #FFFFFF;
-      --text-muted:    #9CA3AF;
-      --text-dim:      #6B7280;
-      --text-faint:    #4B5563;
-      --text-ghost:    #3A3A3A;
-      --accent:        #00FFB2;
-      --accent-ink:    #0A0A0A;   /* text that sits on an accent background */
-      --nav-bg:        rgba(10,10,10,0.94);
-      --code-kw:       #A78BFA;
-      --code-var:      #60A5FA;
-    }
 
-    /* Light theme overrides */
-    html.light {
-      --bg:            #F4F5F7;
-      --bg-elevated:   #FFFFFF;
-      --bg-header:     #ECEEF1;
-      --border:        #DDE0E6;
-      --border-soft:   #E5E8ED;
-      --border-strong: #C8CDD6;
-      --text:          #0D1117;
-      --text-muted:    #4A5568;
-      --text-dim:      #64748B;
-      --text-faint:    #94A3B8;
-      --text-ghost:    #CBD5E1;
-      --accent:        #166534;    /* deep forest green */
-      --accent-ink:    #FFFFFF;
-      --nav-bg:        rgba(244,245,247,0.94);
-      --code-kw:       #6D28D9;
-      --code-var:      #1D4ED8;
-    }
+  <!-- ══ Custom styles ══ -->
+  <link rel="stylesheet" href="css/style.css" />
 
-    *, *::before, *::after { box-sizing: border-box; }
-    html { scroll-behavior: smooth; }
-
-    body {
-      background-color: var(--bg);
-      color: var(--text);
-      font-family: 'Inter', sans-serif;
-      overflow-x: hidden;
-      -webkit-font-smoothing: antialiased;
-      transition: background-color .4s ease, color .4s ease;
-    }
-
-    /* Utility classes bound to theme tokens */
-    .t-bg          { background-color: var(--bg); }
-    .t-elevated    { background-color: var(--bg-elevated); }
-    .t-text        { color: var(--text); }
-    .t-muted       { color: var(--text-muted); }
-    .t-dim         { color: var(--text-dim); }
-    .t-faint       { color: var(--text-faint); }
-    .t-ghost       { color: var(--text-ghost); }
-    .t-accent      { color: var(--accent); }
-    .t-border      { border-color: var(--border); }
-    .accent-bg     { background-color: var(--accent); color: var(--accent-ink); }
-    .accent-line   { background-color: var(--accent); }
-
-    /* ── Scrollbar ── */
-    ::-webkit-scrollbar { width: 4px; }
-    ::-webkit-scrollbar-track { background: var(--bg); }
-    ::-webkit-scrollbar-thumb { background: var(--border-strong); border-radius: 2px; }
-
-    /* ── Nav links ── */
-    .nav-link { position: relative; color: var(--text-muted); transition: color .2s; }
-    .nav-link::after {
-      content: ''; position: absolute; left: 0; bottom: -4px;
-      width: 0; height: 1px; background: var(--text);
-      transition: width .3s ease;
-    }
-    .nav-link.active::after, .nav-link:hover::after { width: 100%; }
-    .nav-link.active { color: var(--text); }
-    .nav-link .num { color: var(--accent); }
-
-    /* ── Theme toggle button ── */
-    .theme-toggle {
-      width: 38px; height: 38px;
-      border: 1px solid var(--border-strong);
-      border-radius: 6px;
-      display: flex; align-items: center; justify-content: center;
-      cursor: pointer; flex-shrink: 0;
-      background: transparent; color: var(--text-muted);
-      transition: border-color .2s, color .2s, background .2s;
-    }
-    .theme-toggle:hover { border-color: var(--accent); color: var(--accent); }
-    .theme-toggle .icon-sun  { display: none; }
-    .theme-toggle .icon-moon { display: block; }
-    html.light .theme-toggle .icon-sun  { display: block; }
-    html.light .theme-toggle .icon-moon { display: none; }
-
-    /* ── Code editor ── */
-    .code-editor {
-      background: var(--bg-elevated);
-      border: 1px solid var(--border);
-      border-radius: 8px;
-      font-family: 'Courier New', monospace;
-      font-size: clamp(10px, 1.6vw, 13px);
-      line-height: 1.8; overflow: hidden; word-break: break-all;
-      transition: background-color .4s ease, border-color .4s ease;
-    }
-    .code-editor .ce-header {
-      background: var(--bg-header);
-      padding: 10px 16px;
-      border-bottom: 1px solid var(--border);
-      border-radius: 8px 8px 0 0;
-      display: flex; align-items: center; justify-content: space-between;
-    }
-    .dot { width:10px; height:10px; border-radius:50%; display:inline-block; margin-right:6px; }
-    .dot-red { background:#FF5F57; } .dot-yellow { background:#FEBC2E; } .dot-green { background:#28C840; }
-
-    .line-num { color: var(--text-ghost); user-select: none; min-width: 20px; display: inline-block; text-align: right; margin-right: 12px; }
-    .kw  { color: var(--code-kw); }
-    .var { color: var(--code-var); }
-    .str { color: var(--accent); }
-    .pun { color: var(--text-muted); }
-    .cursor { display: inline-block; width: 7px; height: 13px; background: var(--accent); vertical-align: middle; animation: blink 1s step-end infinite; }
-    @keyframes blink { 50% { opacity: 0; } }
-
-    /* ── Section rotated label ── */
-    .section-label { writing-mode: vertical-rl; text-orientation: mixed; transform: rotate(180deg); font-size: 10px; letter-spacing: .15em; color: var(--text-ghost); text-transform: uppercase; }
-
-    /* ── Scroll hint ── */
-    .scroll-hint { display: flex; align-items: center; gap: 10px; font-size: 10px; letter-spacing: .15em; color: var(--text-ghost); text-transform: uppercase; }
-    .scroll-hint::before { content: ''; display: block; width: 1px; height: 32px; background: var(--text-ghost); }
-
-    /* ── Project accordion ── */
-    .project-row { border-bottom: 1px solid var(--border); }
-    .project-row:first-child { border-top: 1px solid var(--border); }
-    .project-header { cursor: pointer; transition: background .2s; }
-    .project-header:hover { background: rgba(0,179,126,.06); }
-    html:not(.light) .project-header:hover { background: rgba(0,255,178,.03); }
-    html.light .project-header:hover { background: rgba(22,101,52,.05); }
-
-    .project-arrow {
-      width: 34px; height: 34px; flex-shrink: 0;
-      border: 1px solid var(--border-strong); border-radius: 4px;
-      display: flex; align-items: center; justify-content: center;
-      transition: background .2s, border-color .2s, transform .3s;
-    }
-    .project-arrow path { stroke: var(--text-muted); }
-    .project-row.open .project-arrow { background: var(--accent); border-color: var(--accent); transform: rotate(90deg); }
-    .project-row.open .project-arrow path { stroke: var(--accent-ink); }
-
-    .project-detail { max-height: 0; overflow: hidden; opacity: 0; transition: max-height .45s cubic-bezier(.4,0,.2,1), opacity .3s ease; }
-    .project-row.open .project-detail { max-height: 500px; opacity: 1; }
-
-    /* ── Tags ── */
-    .tag { border: 1px solid var(--border-strong); border-radius: 4px; padding: 3px 10px; font-size: 11px; color: var(--text-muted); white-space: nowrap; transition: border-color .2s, color .2s; }
-
-    /* ── Availability dot ── */
-    .avail-dot { width: 8px; height: 8px; border-radius: 50%; background: var(--accent); animation: pulse 2s ease-in-out infinite; }
-    @keyframes pulse { 0%,100% { box-shadow: 0 0 0 0 rgba(0,255,178,.4); } 50% { box-shadow: 0 0 0 6px rgba(0,255,178,0); } }
-    html.light .avail-dot { background: #166534; }
-    html.light .avail-dot { animation: pulse-light 2s ease-in-out infinite; }
-    @keyframes pulse-light { 0%,100% { box-shadow: 0 0 0 0 rgba(22,101,52,.35); } 50% { box-shadow: 0 0 0 6px rgba(22,101,52,0); } }
-
-    /* ── Social icon buttons ── */
-    .icon-btn { width: 40px; height: 40px; border: 1px solid var(--border-strong); border-radius: 4px; display: flex; align-items: center; justify-content: center; transition: border-color .2s, background .2s; flex-shrink: 0; }
-    .icon-btn:hover { border-color: var(--accent); background: rgba(0,179,126,.08); }
-    html.light .icon-btn:hover { background: rgba(22,101,52,.07); }
-    .icon-btn svg path, .icon-btn svg rect, .icon-btn svg circle, .icon-btn svg polyline { stroke: var(--text-muted); }
-    .icon-btn svg circle[fill] { fill: var(--text-muted); stroke: none; }
-
-    /* ── Email link ── */
-    .email-link { position: relative; color: var(--accent); text-decoration: none; font-size: clamp(.85rem, 3.5vw, 1.1rem); display: inline-flex; align-items: center; gap: 10px; word-break: break-all; }
-    .email-link::after { content: ''; position: absolute; left: 0; bottom: -4px; width: 100%; height: 1px; background: var(--accent); opacity: .4; }
-    .email-link:hover::after { opacity: 1; }
-    .email-link svg path { stroke: var(--accent); }
-
-    /* ── Scroll reveal ── */
-    .reveal { opacity: 0; transform: translateY(28px); transition: opacity .7s ease, transform .7s ease; }
-    .reveal.visible { opacity: 1; transform: translateY(0); }
-
-    /* ── Mobile menu ── */
-    #mobile-menu { display: none; }
-    #mobile-menu.open { display: flex; }
-
-    /* ── Visit site link ── */
-    .visit-link { display: inline-flex; align-items: center; gap: 6px; font-size: 12px; color: var(--accent); text-decoration: none; border: 1px solid var(--accent); padding: 5px 14px; border-radius: 4px; transition: background .2s; white-space: nowrap; opacity: .85; }
-    .visit-link:hover { opacity: 1; background: rgba(0,179,126,.08); }
-    html.light .visit-link:hover { background: rgba(22,101,52,.07); }
-    .visit-link path { stroke: var(--accent); }
-
-    @media (max-width: 639px) { .code-editor { font-size: 10px; } .line-num { min-width: 16px; margin-right: 8px; } }
-
-    .hero-subtitle br { display: none; }
-    @media (min-width: 480px) { .hero-subtitle br { display: inline; } }
-
-    .cta-primary { background: var(--accent); color: var(--accent-ink); transition: opacity .2s; }
-    .cta-primary:hover { opacity: .9; }
-
-    /* ── Experience timeline ── */
-    .exp-dot-active {
-      background: var(--accent);
-      box-shadow: 0 0 0 3px var(--bg), 0 0 0 5px var(--accent);
-      animation: dot-pulse 2s ease-in-out infinite;
-    }
-    @keyframes dot-pulse {
-      0%,100% { box-shadow: 0 0 0 3px var(--bg), 0 0 0 5px var(--accent); }
-      50%      { box-shadow: 0 0 0 3px var(--bg), 0 0 0 7px rgba(0,255,178,0); }
-    }
-    html.light .exp-dot-active {
-      background: #166534;
-      box-shadow: 0 0 0 3px var(--bg), 0 0 0 5px #166534;
-      animation: dot-pulse-light 2s ease-in-out infinite;
-    }
-    @keyframes dot-pulse-light {
-      0%,100% { box-shadow: 0 0 0 3px var(--bg), 0 0 0 5px #166534; }
-      50%      { box-shadow: 0 0 0 3px var(--bg), 0 0 0 7px rgba(22,101,52,0); }
-    }
-
-    /* Accordion */
-    .exp-header { transition: background .2s; }
-    .exp-header:hover { background: rgba(0,255,178,.03) !important; }
-    html.light .exp-header:hover { background: rgba(22,101,52,.04) !important; }
-
-    .exp-arrow {
-      width: 34px; height: 34px; flex-shrink: 0;
-      border: 1px solid var(--border-strong); border-radius: 4px;
-      display: flex; align-items: center; justify-content: center;
-      transition: background .2s, border-color .2s, transform .3s;
-    }
-    .exp-entry.open .exp-arrow {
-      background: var(--accent); border-color: var(--accent);
-      transform: rotate(90deg);
-    }
-    .exp-entry.open .exp-arrow path { stroke: var(--accent-ink) !important; }
-
-    .exp-detail {
-      max-height: 0; overflow: hidden; opacity: 0;
-      transition: max-height .45s cubic-bezier(.4,0,.2,1), opacity .3s ease;
-    }
-    .exp-entry.open .exp-detail { max-height: 600px; opacity: 1; }
-
-    .exp-entry.open .exp-dot {
-      background: var(--accent) !important;
-      border-color: var(--accent) !important;
-    }
-    .exp-card { transition: background-color .4s ease; }
-  </style>
+  <!-- ══ Structured Data (JSON-LD) ══ -->
+  <script type="application/ld+json">
+  {
+    "@context": "https://schema.org",
+    "@type": "Person",
+    "name": "Erlangga Dwi Ananda Pamungkas",
+    "url": "https://erlangga.dev/",
+    "jobTitle": "Junior Software Engineer",
+    "alumniOf": {
+      "@type": "CollegeOrUniversity",
+      "name": "Binus University"
+    },
+    "address": {
+      "@type": "PostalAddress",
+      "addressCountry": "ID"
+    },
+    "email": "mailto:erlangga.golem@gmail.com",
+    "sameAs": [
+      "https://www.linkedin.com/in/erlangga-dwi-ananda-pamungkas-119687235",
+      "https://www.instagram.com/erlanggapmgks/"
+    ],
+    "knowsAbout": ["React.js", "Tailwind CSS", "JavaScript", "TypeScript", "Node.js", "REST APIs", "Git", "PostgreSQL"]
+  }
+  </script>
 </head>
 <body>
 
@@ -274,28 +86,27 @@
 
       <!-- Logo -->
       <a href="#home" class="flex items-center gap-2 shrink-0" aria-label="Home">
-        <span class="t-accent font-bold text-sm">&lt;/&gt;</span>
+        <span class="t-accent font-bold text-sm" aria-hidden="true">&lt;/&gt;</span>
         <span class="font-black text-sm tracking-widest uppercase t-text">ERLANGGA.</span>
       </a>
 
       <!-- Right side: nav + toggle -->
       <div class="flex items-center gap-5 lg:gap-8">
+
         <!-- Desktop nav -->
         <nav class="hidden md:flex items-center gap-8 lg:gap-10" aria-label="Main navigation">
-          <a href="#home"       class="nav-link text-xs tracking-wider flex items-center gap-1.5" data-section="home"><span class="num font-mono text-xs">01.</span> Home</a>
-          <a href="#profile"   class="nav-link text-xs tracking-wider flex items-center gap-1.5" data-section="profile"><span class="num font-mono text-xs">02.</span> Profile</a>
-          <a href="#experience"class="nav-link text-xs tracking-wider flex items-center gap-1.5" data-section="experience"><span class="num font-mono text-xs">03.</span> Experience</a>
-          <a href="#projects"  class="nav-link text-xs tracking-wider flex items-center gap-1.5" data-section="projects"><span class="num font-mono text-xs">04.</span> My Project</a>
-          <a href="#contact"   class="nav-link text-xs tracking-wider flex items-center gap-1.5" data-section="contact"><span class="num font-mono text-xs">05.</span> Contact</a>
+          <a href="#home"        class="nav-link text-xs tracking-wider flex items-center gap-1.5" data-section="home"><span class="num font-mono text-xs">01.</span> Home</a>
+          <a href="#profile"    class="nav-link text-xs tracking-wider flex items-center gap-1.5" data-section="profile"><span class="num font-mono text-xs">02.</span> Profile</a>
+          <a href="#experience" class="nav-link text-xs tracking-wider flex items-center gap-1.5" data-section="experience"><span class="num font-mono text-xs">03.</span> Experience</a>
+          <a href="#projects"   class="nav-link text-xs tracking-wider flex items-center gap-1.5" data-section="projects"><span class="num font-mono text-xs">04.</span> My Project</a>
+          <a href="#contact"    class="nav-link text-xs tracking-wider flex items-center gap-1.5" data-section="contact"><span class="num font-mono text-xs">05.</span> Contact</a>
         </nav>
 
         <!-- Theme toggle -->
         <button id="theme-toggle" class="theme-toggle" aria-label="Toggle light/dark theme" title="Toggle theme">
-          <!-- Moon (shown in dark mode) -->
           <svg class="icon-moon" width="17" height="17" viewBox="0 0 24 24" fill="none" aria-hidden="true">
             <path d="M21 12.79A9 9 0 1111.21 3 7 7 0 0021 12.79z" stroke="currentColor" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round"/>
           </svg>
-          <!-- Sun (shown in light mode) -->
           <svg class="icon-sun" width="17" height="17" viewBox="0 0 24 24" fill="none" aria-hidden="true">
             <circle cx="12" cy="12" r="4.2" stroke="currentColor" stroke-width="1.6"/>
             <path d="M12 2v2.5M12 19.5V22M4.22 4.22l1.77 1.77M18.01 18.01l1.77 1.77M2 12h2.5M19.5 12H22M4.22 19.78l1.77-1.77M18.01 5.99l1.77-1.77" stroke="currentColor" stroke-width="1.6" stroke-linecap="round"/>
@@ -304,36 +115,36 @@
 
         <!-- Hamburger -->
         <button id="hamburger" class="md:hidden flex flex-col gap-1.5 p-2" aria-label="Toggle menu" aria-expanded="false">
-          <span class="block w-5 h-0.5 transition-all duration-300" style="background: var(--text);"></span>
-          <span class="block w-5 h-0.5 transition-all duration-300" style="background: var(--text);"></span>
-          <span class="block w-3 h-0.5 transition-all duration-300" style="background: var(--text);"></span>
+          <span class="block w-5 h-0.5 transition-all duration-300" style="background:var(--text);"></span>
+          <span class="block w-5 h-0.5 transition-all duration-300" style="background:var(--text);"></span>
+          <span class="block w-3 h-0.5 transition-all duration-300" style="background:var(--text);"></span>
         </button>
       </div>
     </div>
 
-    <!-- Mobile dropdown menu -->
-    <div id="mobile-menu" class="md:hidden flex-col gap-5 px-5 sm:px-8 pt-6 pb-8 t-bg" style="border-top: 1px solid var(--border);">
-      <a href="#home"       class="nav-link text-sm flex items-center gap-2"><span class="num font-mono text-xs">01.</span> Home</a>
-      <a href="#profile"   class="nav-link text-sm flex items-center gap-2"><span class="num font-mono text-xs">02.</span> Profile</a>
-      <a href="#experience"class="nav-link text-sm flex items-center gap-2"><span class="num font-mono text-xs">03.</span> Experience</a>
-      <a href="#projects"  class="nav-link text-sm flex items-center gap-2"><span class="num font-mono text-xs">04.</span> My Project</a>
-      <a href="#contact"   class="nav-link text-sm flex items-center gap-2"><span class="num font-mono text-xs">05.</span> Contact</a>
+    <!-- Mobile dropdown -->
+    <div id="mobile-menu" class="md:hidden flex-col gap-5 px-5 sm:px-8 pt-6 pb-8 t-bg" style="border-top:1px solid var(--border);">
+      <a href="#home"        class="nav-link text-sm flex items-center gap-2"><span class="num font-mono text-xs">01.</span> Home</a>
+      <a href="#profile"    class="nav-link text-sm flex items-center gap-2"><span class="num font-mono text-xs">02.</span> Profile</a>
+      <a href="#experience" class="nav-link text-sm flex items-center gap-2"><span class="num font-mono text-xs">03.</span> Experience</a>
+      <a href="#projects"   class="nav-link text-sm flex items-center gap-2"><span class="num font-mono text-xs">04.</span> My Project</a>
+      <a href="#contact"    class="nav-link text-sm flex items-center gap-2"><span class="num font-mono text-xs">05.</span> Contact</a>
     </div>
   </header>
 
 
   <!-- ══════════════ HERO ══════════════ -->
-  <section id="home" class="min-h-screen flex flex-col justify-center relative pt-24 pb-16">
+  <section id="home" class="min-h-screen flex flex-col justify-center relative pt-24 pb-16" aria-labelledby="hero-heading">
     <div class="max-w-screen-xl mx-auto px-5 sm:px-8 w-full">
       <div class="grid grid-cols-1 lg:grid-cols-2 gap-10 xl:gap-16 items-center">
 
         <div class="reveal">
           <p class="t-accent text-xs tracking-widest uppercase mb-5 sm:mb-6 flex items-center gap-3">
-            <span class="inline-block w-6 sm:w-8 h-px accent-line shrink-0"></span>
+            <span class="inline-block w-6 sm:w-8 h-px accent-line shrink-0" aria-hidden="true"></span>
             Hello, World. I'm
           </p>
 
-          <h1 class="font-black leading-none mb-6 sm:mb-8" style="font-size: clamp(2.6rem, 9vw, 5.5rem);">
+          <h1 id="hero-heading" class="font-black leading-none mb-6 sm:mb-8" style="font-size:clamp(2.6rem,9vw,5.5rem);">
             <span class="block t-text">Erlangga</span>
             <span class="block t-text">Dwi Ananda</span>
             <span class="block t-accent">Pamungkas.</span>
@@ -354,13 +165,18 @@
           </div>
         </div>
 
+        <!-- Code editor widget -->
         <div class="reveal hidden sm:block" style="transition-delay:.15s;">
-          <div class="code-editor w-full max-w-lg mx-auto lg:ml-auto lg:mr-0">
+          <div class="code-editor w-full max-w-lg mx-auto lg:ml-auto lg:mr-0" role="img" aria-label="Code snippet describing Erlangga as a software engineer">
             <div class="ce-header">
-              <div><span class="dot dot-red"></span><span class="dot dot-yellow"></span><span class="dot dot-green"></span></div>
+              <div aria-hidden="true">
+                <span class="dot dot-red"></span>
+                <span class="dot dot-yellow"></span>
+                <span class="dot dot-green"></span>
+              </div>
               <span class="t-dim text-xs font-mono">engineer.ts</span>
             </div>
-            <div class="p-4 sm:p-6 select-none overflow-x-auto" aria-label="Code snippet describing Erlangga">
+            <div class="p-4 sm:p-6 select-none overflow-x-auto">
               <div><span class="line-num">01</span><span class="kw">const</span> <span class="var">engineer</span> <span class="pun">= {</span></div>
               <div><span class="line-num">02</span>&nbsp;&nbsp;<span class="pun">name:</span>&nbsp;<span class="str">'Erlangga'</span><span class="pun">,</span></div>
               <div><span class="line-num">03</span>&nbsp;&nbsp;<span class="pun">role:</span>&nbsp;<span class="str">'Junior Software Engineer'</span><span class="pun">,</span></div>
@@ -371,7 +187,7 @@
               <div><span class="line-num">08</span>&nbsp;&nbsp;&nbsp;&nbsp;<span class="str">'useful products'</span><span class="pun">,</span></div>
               <div><span class="line-num">09</span>&nbsp;&nbsp;&nbsp;&nbsp;<span class="str">'real impact'</span></div>
               <div><span class="line-num">10</span>&nbsp;&nbsp;<span class="pun">]</span></div>
-              <div><span class="line-num">11</span><span class="pun">}</span><span class="cursor"></span></div>
+              <div><span class="line-num">11</span><span class="pun">}</span><span class="cursor" aria-hidden="true"></span></div>
             </div>
           </div>
           <p class="text-right text-xs tracking-widest t-ghost uppercase mt-4">Based in Indonesia</p>
@@ -380,27 +196,27 @@
       </div>
     </div>
 
-    <div class="absolute bottom-8 sm:bottom-10 left-5 sm:left-8 hidden xs:block">
+    <div class="absolute bottom-8 sm:bottom-10 left-5 sm:left-8 hidden xs:block" aria-hidden="true">
       <div class="scroll-hint">Scroll to discover</div>
     </div>
   </section>
 
 
   <!-- ══════════════ PROFILE ══════════════ -->
-  <section id="profile" class="relative py-16 sm:py-20 lg:py-28" style="border-top:1px solid var(--border-soft);">
+  <section id="profile" class="relative py-16 sm:py-20 lg:py-28" style="border-top:1px solid var(--border-soft);" aria-labelledby="profile-heading">
     <div class="max-w-screen-xl mx-auto px-5 sm:px-8 w-full">
       <div class="flex items-start gap-4 sm:gap-6">
 
-        <div class="hidden sm:flex flex-col items-center gap-2 mt-1 shrink-0">
+        <div class="hidden sm:flex flex-col items-center gap-2 mt-1 shrink-0" aria-hidden="true">
           <span class="t-accent text-xs font-mono">02</span>
           <span class="section-label">Profile</span>
         </div>
 
         <div class="flex-1 reveal">
-          <span class="sm:hidden t-accent text-xs font-mono mb-3 block">02 — Profile</span>
-
+          <span class="sm:hidden t-accent text-xs font-mono mb-3 block" aria-hidden="true">02 — Profile</span>
           <p class="t-accent text-xs tracking-widest uppercase mb-5 sm:mb-6">A little about me</p>
-          <h2 class="font-black leading-tight mb-10 sm:mb-14 t-text" style="font-size: clamp(1.8rem, 5vw, 4rem);">
+
+          <h2 id="profile-heading" class="font-black leading-tight mb-10 sm:mb-14 t-text" style="font-size:clamp(1.8rem,5vw,4rem);">
             I turn complex problems into<br class="hidden sm:inline"/>
             <span class="t-accent">simple, reliable</span> software.
           </h2>
@@ -414,15 +230,15 @@
 
             <div>
               <p class="t-faint text-xs tracking-widest uppercase mb-4 sm:mb-5 font-mono">// My Toolbox</p>
-              <div class="grid grid-cols-2 rounded-sm" style="border: 1px solid var(--border);">
-                <div class="px-4 sm:px-5 py-3 sm:py-4 flex items-center gap-2 sm:gap-3" style="border-right:1px solid var(--border); border-bottom:1px solid var(--border);"><span class="t-faint font-mono text-xs">01</span><span class="text-sm t-text">React.js</span></div>
-                <div class="px-4 sm:px-5 py-3 sm:py-4 flex items-center gap-2 sm:gap-3" style="border-bottom:1px solid var(--border);"><span class="t-faint font-mono text-xs">02</span><span class="text-sm t-text">Tailwind CSS</span></div>
-                <div class="px-4 sm:px-5 py-3 sm:py-4 flex items-center gap-2 sm:gap-3" style="border-right:1px solid var(--border); border-bottom:1px solid var(--border);"><span class="t-faint font-mono text-xs">03</span><span class="text-sm t-text">JavaScript</span></div>
-                <div class="px-4 sm:px-5 py-3 sm:py-4 flex items-center gap-2 sm:gap-3" style="border-bottom:1px solid var(--border);"><span class="t-faint font-mono text-xs">04</span><span class="text-sm t-text">TypeScript</span></div>
-                <div class="px-4 sm:px-5 py-3 sm:py-4 flex items-center gap-2 sm:gap-3" style="border-right:1px solid var(--border); border-bottom:1px solid var(--border);"><span class="t-faint font-mono text-xs">05</span><span class="text-sm t-text">Node.js</span></div>
-                <div class="px-4 sm:px-5 py-3 sm:py-4 flex items-center gap-2 sm:gap-3" style="border-bottom:1px solid var(--border);"><span class="t-faint font-mono text-xs">06</span><span class="text-sm t-text">REST APIs</span></div>
-                <div class="px-4 sm:px-5 py-3 sm:py-4 flex items-center gap-2 sm:gap-3" style="border-right:1px solid var(--border);"><span class="t-faint font-mono text-xs">07</span><span class="text-sm t-text">Git</span></div>
-                <div class="px-4 sm:px-5 py-3 sm:py-4 flex items-center gap-2 sm:gap-3"><span class="t-faint font-mono text-xs">08</span><span class="text-sm t-text">PostgreSQL</span></div>
+              <div class="grid grid-cols-2 rounded-sm" style="border:1px solid var(--border);">
+                <div class="px-4 sm:px-5 py-3 sm:py-4 flex items-center gap-2 sm:gap-3" style="border-right:1px solid var(--border);border-bottom:1px solid var(--border);"><span class="t-faint font-mono text-xs" aria-hidden="true">01</span><span class="text-sm t-text">React.js</span></div>
+                <div class="px-4 sm:px-5 py-3 sm:py-4 flex items-center gap-2 sm:gap-3" style="border-bottom:1px solid var(--border);"><span class="t-faint font-mono text-xs" aria-hidden="true">02</span><span class="text-sm t-text">Tailwind CSS</span></div>
+                <div class="px-4 sm:px-5 py-3 sm:py-4 flex items-center gap-2 sm:gap-3" style="border-right:1px solid var(--border);border-bottom:1px solid var(--border);"><span class="t-faint font-mono text-xs" aria-hidden="true">03</span><span class="text-sm t-text">JavaScript</span></div>
+                <div class="px-4 sm:px-5 py-3 sm:py-4 flex items-center gap-2 sm:gap-3" style="border-bottom:1px solid var(--border);"><span class="t-faint font-mono text-xs" aria-hidden="true">04</span><span class="text-sm t-text">TypeScript</span></div>
+                <div class="px-4 sm:px-5 py-3 sm:py-4 flex items-center gap-2 sm:gap-3" style="border-right:1px solid var(--border);border-bottom:1px solid var(--border);"><span class="t-faint font-mono text-xs" aria-hidden="true">05</span><span class="text-sm t-text">Node.js</span></div>
+                <div class="px-4 sm:px-5 py-3 sm:py-4 flex items-center gap-2 sm:gap-3" style="border-bottom:1px solid var(--border);"><span class="t-faint font-mono text-xs" aria-hidden="true">06</span><span class="text-sm t-text">REST APIs</span></div>
+                <div class="px-4 sm:px-5 py-3 sm:py-4 flex items-center gap-2 sm:gap-3" style="border-right:1px solid var(--border);"><span class="t-faint font-mono text-xs" aria-hidden="true">07</span><span class="text-sm t-text">Git</span></div>
+                <div class="px-4 sm:px-5 py-3 sm:py-4 flex items-center gap-2 sm:gap-3"><span class="t-faint font-mono text-xs" aria-hidden="true">08</span><span class="text-sm t-text">PostgreSQL</span></div>
               </div>
             </div>
           </div>
@@ -433,40 +249,37 @@
 
 
   <!-- ══════════════ EXPERIENCE ══════════════ -->
-  <section id="experience" class="relative py-16 sm:py-20 lg:py-28" style="border-top:1px solid var(--border-soft);">
+  <section id="experience" class="relative py-16 sm:py-20 lg:py-28" style="border-top:1px solid var(--border-soft);" aria-labelledby="exp-heading">
     <div class="max-w-screen-xl mx-auto px-5 sm:px-8 w-full">
       <div class="flex items-start gap-4 sm:gap-6">
 
-        <div class="hidden sm:flex flex-col items-center gap-2 mt-1 shrink-0">
+        <div class="hidden sm:flex flex-col items-center gap-2 mt-1 shrink-0" aria-hidden="true">
           <span class="t-accent text-xs font-mono">03</span>
           <span class="section-label">Experience</span>
         </div>
 
         <div class="flex-1">
           <div class="reveal">
-            <span class="sm:hidden t-accent text-xs font-mono mb-3 block">03 — Experience</span>
+            <span class="sm:hidden t-accent text-xs font-mono mb-3 block" aria-hidden="true">03 — Experience</span>
             <p class="t-accent text-xs tracking-widest uppercase mb-4 sm:mb-5">Work History</p>
-            <h2 class="font-black leading-tight mb-12 sm:mb-16 t-text" style="font-size: clamp(2rem, 6vw, 4.5rem);">
+            <h2 id="exp-heading" class="font-black leading-tight mb-12 sm:mb-16 t-text" style="font-size:clamp(2rem,6vw,4.5rem);">
               Where I've<br/><span class="t-accent">grown my craft.</span>
             </h2>
           </div>
 
           <!-- Timeline -->
           <div class="reveal relative" style="transition-delay:.1s;">
-
-            <!-- Vertical line (desktop) -->
-            <div class="absolute left-0 top-0 bottom-0 w-px hidden sm:block" style="background: var(--border); margin-left: 5px;"></div>
+            <div class="absolute left-0 top-0 bottom-0 w-px hidden sm:block" style="background:var(--border);margin-left:5px;" aria-hidden="true"></div>
 
             <div class="space-y-0" id="exp-list">
 
-              <!-- ── Entry 1: Telkom University ── -->
-              <div class="exp-entry relative" data-exp="1">
+              <!-- Entry 1: Telkom University -->
+              <article class="exp-entry relative" data-exp="1">
                 <div class="sm:pl-10">
-                  <div class="exp-dot hidden sm:flex absolute left-0 top-7 w-3 h-3 rounded-full" style="background: var(--border); border: 2px solid var(--border-strong);"></div>
-
-                  <!-- Clickable header -->
+                  <div class="exp-dot hidden sm:flex absolute left-0 top-7 w-3 h-3 rounded-full" style="background:var(--border);border:2px solid var(--border-strong);" aria-hidden="true"></div>
                   <div class="exp-header exp-card cursor-pointer flex items-center justify-between gap-4 px-5 sm:px-6 py-5"
-                       style="border: 1px solid var(--border); background: var(--bg-elevated); border-bottom: none;">
+                       style="border:1px solid var(--border);background:var(--bg-elevated);border-bottom:none;"
+                       role="button" aria-expanded="false" tabindex="0">
                     <div class="flex flex-col sm:flex-row sm:items-center gap-2 sm:gap-6 flex-1 min-w-0">
                       <div class="min-w-0">
                         <span class="t-accent text-xs tracking-widest uppercase font-mono">Internship</span>
@@ -474,36 +287,36 @@
                         <p class="t-muted text-sm mt-0.5">Telkom University Surabaya <span class="t-faint">· Surabaya, ID</span></p>
                       </div>
                       <span class="exp-date text-xs font-mono whitespace-nowrap px-3 py-1.5 rounded-sm self-start sm:self-center shrink-0"
-                            style="border: 1px solid var(--border); color: var(--text-faint); background: var(--bg);">Jul 2021 – Nov 2021</span>
+                            style="border:1px solid var(--border);color:var(--text-faint);background:var(--bg);">
+                        <time datetime="2021-07/2021-11">Jul 2021 – Nov 2021</time>
+                      </span>
                     </div>
-                    <div class="exp-arrow shrink-0">
-                      <svg width="13" height="13" viewBox="0 0 14 14" fill="none" aria-hidden="true">
-                        <path d="M2 7h10M8 3l4 4-4 4" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round" style="stroke: var(--text-muted);"/>
+                    <div class="exp-arrow shrink-0" aria-hidden="true">
+                      <svg width="13" height="13" viewBox="0 0 14 14" fill="none">
+                        <path d="M2 7h10M8 3l4 4-4 4" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round" style="stroke:var(--text-muted);"/>
                       </svg>
                     </div>
                   </div>
-
-                  <!-- Dropdown detail -->
-                  <div class="exp-detail" style="border: 1px solid var(--border); border-top: none; background: var(--bg-elevated);">
+                  <div class="exp-detail" style="border:1px solid var(--border);border-top:none;background:var(--bg-elevated);">
                     <div class="px-5 sm:px-6 pb-5 pt-4">
                       <p class="t-dim text-xs uppercase tracking-widest mb-3 font-mono">// LPPM — Lembaga Penelitian dan Pengabdian Kepada Masyarakat</p>
                       <ul class="space-y-2.5">
-                        <li class="flex gap-2.5 t-muted text-sm leading-relaxed"><span class="t-accent mt-1.5 shrink-0" style="font-size:8px;">▸</span>Analyzed report data from LPPM then printed and submitted to lecturers at ITTS.</li>
-                        <li class="flex gap-2.5 t-muted text-sm leading-relaxed"><span class="t-accent mt-1.5 shrink-0" style="font-size:8px;">▸</span>Input LPPM research and service report data into the "Igracias" ITTS website.</li>
-                        <li class="flex gap-2.5 t-muted text-sm leading-relaxed"><span class="t-accent mt-1.5 shrink-0" style="font-size:8px;">▸</span>Designed website content for the ITTS LPPM website.</li>
+                        <li class="flex gap-2.5 t-muted text-sm leading-relaxed"><span class="t-accent mt-1.5 shrink-0" style="font-size:8px;" aria-hidden="true">▸</span>Analyzed report data from LPPM then printed and submitted to lecturers at ITTS.</li>
+                        <li class="flex gap-2.5 t-muted text-sm leading-relaxed"><span class="t-accent mt-1.5 shrink-0" style="font-size:8px;" aria-hidden="true">▸</span>Input LPPM research and service report data into the "Igracias" ITTS website.</li>
+                        <li class="flex gap-2.5 t-muted text-sm leading-relaxed"><span class="t-accent mt-1.5 shrink-0" style="font-size:8px;" aria-hidden="true">▸</span>Designed website content for the ITTS LPPM website.</li>
                       </ul>
                     </div>
                   </div>
                 </div>
-              </div>
+              </article>
 
-              <!-- ── Entry 2: Soundclub / Supervybe ── -->
-              <div class="exp-entry relative" data-exp="2">
+              <!-- Entry 2: Soundclub / Supervybe -->
+              <article class="exp-entry relative" data-exp="2">
                 <div class="sm:pl-10">
-                  <div class="exp-dot hidden sm:flex absolute left-0 top-7 w-3 h-3 rounded-full" style="background: var(--border); border: 2px solid var(--border-strong);"></div>
-
+                  <div class="exp-dot hidden sm:flex absolute left-0 top-7 w-3 h-3 rounded-full" style="background:var(--border);border:2px solid var(--border-strong);" aria-hidden="true"></div>
                   <div class="exp-header exp-card cursor-pointer flex items-center justify-between gap-4 px-5 sm:px-6 py-5"
-                       style="border: 1px solid var(--border); background: var(--bg-elevated); border-top: none; border-bottom: none;">
+                       style="border:1px solid var(--border);background:var(--bg-elevated);border-top:none;border-bottom:none;"
+                       role="button" aria-expanded="false" tabindex="0">
                     <div class="flex flex-col sm:flex-row sm:items-center gap-2 sm:gap-6 flex-1 min-w-0">
                       <div class="min-w-0">
                         <span class="t-accent text-xs tracking-widest uppercase font-mono">Full Time</span>
@@ -511,36 +324,37 @@
                         <p class="t-muted text-sm mt-0.5">Soundclub Ltd / Supervybe <span class="t-faint">· Greater London, UK</span></p>
                       </div>
                       <span class="exp-date text-xs font-mono whitespace-nowrap px-3 py-1.5 rounded-sm self-start sm:self-center shrink-0"
-                            style="border: 1px solid var(--border); color: var(--text-faint); background: var(--bg);">Apr 2022 – Jan 2023</span>
+                            style="border:1px solid var(--border);color:var(--text-faint);background:var(--bg);">
+                        <time datetime="2022-04/2023-01">Apr 2022 – Jan 2023</time>
+                      </span>
                     </div>
-                    <div class="exp-arrow shrink-0">
-                      <svg width="13" height="13" viewBox="0 0 14 14" fill="none" aria-hidden="true">
-                        <path d="M2 7h10M8 3l4 4-4 4" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round" style="stroke: var(--text-muted);"/>
+                    <div class="exp-arrow shrink-0" aria-hidden="true">
+                      <svg width="13" height="13" viewBox="0 0 14 14" fill="none">
+                        <path d="M2 7h10M8 3l4 4-4 4" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round" style="stroke:var(--text-muted);"/>
                       </svg>
                     </div>
                   </div>
-
-                  <div class="exp-detail" style="border: 1px solid var(--border); border-top: none; background: var(--bg-elevated);">
+                  <div class="exp-detail" style="border:1px solid var(--border);border-top:none;background:var(--bg-elevated);">
                     <div class="px-5 sm:px-6 pb-5 pt-4">
                       <p class="t-dim text-xs uppercase tracking-widest mb-3 font-mono">// Supervybe (prev. Festyful – Soundclub)</p>
                       <ul class="space-y-2.5">
-                        <li class="flex gap-2.5 t-muted text-sm leading-relaxed"><span class="t-accent mt-1.5 shrink-0" style="font-size:8px;">▸</span>Set up and maintained test environments for web and mobile applications.</li>
-                        <li class="flex gap-2.5 t-muted text-sm leading-relaxed"><span class="t-accent mt-1.5 shrink-0" style="font-size:8px;">▸</span>Understood product features and their underlying technical behaviour.</li>
-                        <li class="flex gap-2.5 t-muted text-sm leading-relaxed"><span class="t-accent mt-1.5 shrink-0" style="font-size:8px;">▸</span>Developed test cases including detailed test results for web and app platforms.</li>
-                        <li class="flex gap-2.5 t-muted text-sm leading-relaxed"><span class="t-accent mt-1.5 shrink-0" style="font-size:8px;">▸</span>Performed manual testing of web and app products with comprehensive bug reporting.</li>
+                        <li class="flex gap-2.5 t-muted text-sm leading-relaxed"><span class="t-accent mt-1.5 shrink-0" style="font-size:8px;" aria-hidden="true">▸</span>Set up and maintained test environments for web and mobile applications.</li>
+                        <li class="flex gap-2.5 t-muted text-sm leading-relaxed"><span class="t-accent mt-1.5 shrink-0" style="font-size:8px;" aria-hidden="true">▸</span>Understood product features and their underlying technical behaviour.</li>
+                        <li class="flex gap-2.5 t-muted text-sm leading-relaxed"><span class="t-accent mt-1.5 shrink-0" style="font-size:8px;" aria-hidden="true">▸</span>Developed test cases including detailed test results for web and app platforms.</li>
+                        <li class="flex gap-2.5 t-muted text-sm leading-relaxed"><span class="t-accent mt-1.5 shrink-0" style="font-size:8px;" aria-hidden="true">▸</span>Performed manual testing of web and app products with comprehensive bug reporting.</li>
                       </ul>
                     </div>
                   </div>
                 </div>
-              </div>
+              </article>
 
-              <!-- ── Entry 3: Cherrypick Studio ── -->
-              <div class="exp-entry relative" data-exp="3">
+              <!-- Entry 3: Cherrypick Studio -->
+              <article class="exp-entry relative" data-exp="3">
                 <div class="sm:pl-10">
-                  <div class="exp-dot hidden sm:flex absolute left-0 top-7 w-3 h-3 rounded-full" style="background: var(--border); border: 2px solid var(--border-strong);"></div>
-
+                  <div class="exp-dot hidden sm:flex absolute left-0 top-7 w-3 h-3 rounded-full" style="background:var(--border);border:2px solid var(--border-strong);" aria-hidden="true"></div>
                   <div class="exp-header exp-card cursor-pointer flex items-center justify-between gap-4 px-5 sm:px-6 py-5"
-                       style="border: 1px solid var(--border); background: var(--bg-elevated); border-top: none; border-bottom: none;">
+                       style="border:1px solid var(--border);background:var(--bg-elevated);border-top:none;border-bottom:none;"
+                       role="button" aria-expanded="false" tabindex="0">
                     <div class="flex flex-col sm:flex-row sm:items-center gap-2 sm:gap-6 flex-1 min-w-0">
                       <div class="min-w-0">
                         <span class="t-accent text-xs tracking-widest uppercase font-mono">Internship</span>
@@ -548,36 +362,37 @@
                         <p class="t-muted text-sm mt-0.5">Cherrypick Studio <span class="t-faint">· Malang, ID</span></p>
                       </div>
                       <span class="exp-date text-xs font-mono whitespace-nowrap px-3 py-1.5 rounded-sm self-start sm:self-center shrink-0"
-                            style="border: 1px solid var(--border); color: var(--text-faint); background: var(--bg);">Feb 2026 – Jun 2026</span>
+                            style="border:1px solid var(--border);color:var(--text-faint);background:var(--bg);">
+                        <time datetime="2026-02/2026-06">Feb 2026 – Jun 2026</time>
+                      </span>
                     </div>
-                    <div class="exp-arrow shrink-0">
-                      <svg width="13" height="13" viewBox="0 0 14 14" fill="none" aria-hidden="true">
-                        <path d="M2 7h10M8 3l4 4-4 4" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round" style="stroke: var(--text-muted);"/>
+                    <div class="exp-arrow shrink-0" aria-hidden="true">
+                      <svg width="13" height="13" viewBox="0 0 14 14" fill="none">
+                        <path d="M2 7h10M8 3l4 4-4 4" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round" style="stroke:var(--text-muted);"/>
                       </svg>
                     </div>
                   </div>
-
-                  <div class="exp-detail" style="border: 1px solid var(--border); border-top: none; background: var(--bg-elevated);">
+                  <div class="exp-detail" style="border:1px solid var(--border);border-top:none;background:var(--bg-elevated);">
                     <div class="px-5 sm:px-6 pb-5 pt-4">
                       <ul class="space-y-2.5">
-                        <li class="flex gap-2.5 t-muted text-sm leading-relaxed"><span class="t-accent mt-1.5 shrink-0" style="font-size:8px;">▸</span>Implemented and translated UI/UX designs into responsive, functional web interfaces for the Cherrypick Marketplace.</li>
-                        <li class="flex gap-2.5 t-muted text-sm leading-relaxed"><span class="t-accent mt-1.5 shrink-0" style="font-size:8px;">▸</span>Developed and customised web pages using Webflow, React.js, Blade PHP, HTML, CSS, and JavaScript.</li>
-                        <li class="flex gap-2.5 t-muted text-sm leading-relaxed"><span class="t-accent mt-1.5 shrink-0" style="font-size:8px;">▸</span>Converted Figma design prototypes into production-ready web interfaces.</li>
-                        <li class="flex gap-2.5 t-muted text-sm leading-relaxed"><span class="t-accent mt-1.5 shrink-0" style="font-size:8px;">▸</span>Ensured responsive layouts, cross-device compatibility, and consistency with design specs.</li>
-                        <li class="flex gap-2.5 t-muted text-sm leading-relaxed"><span class="t-accent mt-1.5 shrink-0" style="font-size:8px;">▸</span>Collaborated with the development team to implement, refine, and maintain website features across multiple projects.</li>
+                        <li class="flex gap-2.5 t-muted text-sm leading-relaxed"><span class="t-accent mt-1.5 shrink-0" style="font-size:8px;" aria-hidden="true">▸</span>Implemented and translated UI/UX designs into responsive, functional web interfaces for the Cherrypick Marketplace.</li>
+                        <li class="flex gap-2.5 t-muted text-sm leading-relaxed"><span class="t-accent mt-1.5 shrink-0" style="font-size:8px;" aria-hidden="true">▸</span>Developed and customised web pages using Webflow, React.js, Blade PHP, HTML, CSS, and JavaScript.</li>
+                        <li class="flex gap-2.5 t-muted text-sm leading-relaxed"><span class="t-accent mt-1.5 shrink-0" style="font-size:8px;" aria-hidden="true">▸</span>Converted Figma design prototypes into production-ready web interfaces.</li>
+                        <li class="flex gap-2.5 t-muted text-sm leading-relaxed"><span class="t-accent mt-1.5 shrink-0" style="font-size:8px;" aria-hidden="true">▸</span>Ensured responsive layouts, cross-device compatibility, and consistency with design specs.</li>
+                        <li class="flex gap-2.5 t-muted text-sm leading-relaxed"><span class="t-accent mt-1.5 shrink-0" style="font-size:8px;" aria-hidden="true">▸</span>Collaborated with the development team to implement, refine, and maintain website features across multiple projects.</li>
                       </ul>
                     </div>
                   </div>
                 </div>
-              </div>
+              </article>
 
-              <!-- ── Entry 4: Leapfrog ── -->
-              <div class="exp-entry relative" data-exp="4">
+              <!-- Entry 4: Leapfrog (current) -->
+              <article class="exp-entry relative" data-exp="4">
                 <div class="sm:pl-10">
-                  <div class="hidden sm:flex absolute left-0 top-7 w-3 h-3 rounded-full exp-dot-active"></div>
-
+                  <div class="hidden sm:flex absolute left-0 top-7 w-3 h-3 rounded-full exp-dot-active" aria-hidden="true"></div>
                   <div class="exp-header exp-card cursor-pointer flex items-center justify-between gap-4 px-5 sm:px-6 py-5"
-                       style="border: 1px solid var(--border); background: var(--bg-elevated); border-top: none; border-bottom: none;">
+                       style="border:1px solid var(--border);background:var(--bg-elevated);border-top:none;border-bottom:none;"
+                       role="button" aria-expanded="false" tabindex="0">
                     <div class="flex flex-col sm:flex-row sm:items-center gap-2 sm:gap-6 flex-1 min-w-0">
                       <div class="min-w-0">
                         <span class="t-accent text-xs tracking-widest uppercase font-mono">Freelance</span>
@@ -585,36 +400,35 @@
                         <p class="t-muted text-sm mt-0.5">Leapfrog <span class="t-faint">· Malang, ID</span></p>
                       </div>
                       <span class="text-xs font-mono whitespace-nowrap px-3 py-1.5 rounded-sm self-start sm:self-center shrink-0 flex items-center gap-1.5"
-                            style="border: 1px solid var(--accent); color: var(--accent); background: var(--bg);">
-                        <span class="avail-dot" style="width:6px;height:6px;flex-shrink:0;"></span>
-                        Jul 2023 – Present
+                            style="border:1px solid var(--accent);color:var(--accent);background:var(--bg);">
+                        <span class="avail-dot" style="width:6px;height:6px;flex-shrink:0;" aria-hidden="true"></span>
+                        <time datetime="2023-07">Jul 2023 – Present</time>
                       </span>
                     </div>
-                    <div class="exp-arrow shrink-0">
-                      <svg width="13" height="13" viewBox="0 0 14 14" fill="none" aria-hidden="true">
-                        <path d="M2 7h10M8 3l4 4-4 4" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round" style="stroke: var(--text-muted);"/>
+                    <div class="exp-arrow shrink-0" aria-hidden="true">
+                      <svg width="13" height="13" viewBox="0 0 14 14" fill="none">
+                        <path d="M2 7h10M8 3l4 4-4 4" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round" style="stroke:var(--text-muted);"/>
                       </svg>
                     </div>
                   </div>
-
-                  <div class="exp-detail" style="border: 1px solid var(--border); border-top: none; background: var(--bg-elevated);">
+                  <div class="exp-detail" style="border:1px solid var(--border);border-top:none;background:var(--bg-elevated);">
                     <div class="px-5 sm:px-6 pb-5 pt-4">
                       <ul class="space-y-2.5">
-                        <li class="flex gap-2.5 t-muted text-sm leading-relaxed"><span class="t-accent mt-1.5 shrink-0" style="font-size:8px;">▸</span>Built and deployed a web application from the ground up, focusing on functionality, responsive UI, and overall user experience.</li>
-                        <li class="flex gap-2.5 t-muted text-sm leading-relaxed"><span class="t-accent mt-1.5 shrink-0" style="font-size:8px;">▸</span>Developing a full-stack internal dashboard for a private tax services company, including frontend interfaces, backend services, database integration, and business logic.</li>
-                        <li class="flex gap-2.5 t-muted text-sm leading-relaxed"><span class="t-accent mt-1.5 shrink-0" style="font-size:8px;">▸</span>Translated business requirements into scalable and user-friendly web application features.</li>
-                        <li class="flex gap-2.5 t-muted text-sm leading-relaxed"><span class="t-accent mt-1.5 shrink-0" style="font-size:8px;">▸</span>Managed the development process from system design and implementation to testing, debugging, and continuous improvement.</li>
+                        <li class="flex gap-2.5 t-muted text-sm leading-relaxed"><span class="t-accent mt-1.5 shrink-0" style="font-size:8px;" aria-hidden="true">▸</span>Built and deployed a web application from the ground up, focusing on functionality, responsive UI, and overall user experience.</li>
+                        <li class="flex gap-2.5 t-muted text-sm leading-relaxed"><span class="t-accent mt-1.5 shrink-0" style="font-size:8px;" aria-hidden="true">▸</span>Developing a full-stack internal dashboard for a private tax services company, including frontend interfaces, backend services, database integration, and business logic.</li>
+                        <li class="flex gap-2.5 t-muted text-sm leading-relaxed"><span class="t-accent mt-1.5 shrink-0" style="font-size:8px;" aria-hidden="true">▸</span>Translated business requirements into scalable and user-friendly web application features.</li>
+                        <li class="flex gap-2.5 t-muted text-sm leading-relaxed"><span class="t-accent mt-1.5 shrink-0" style="font-size:8px;" aria-hidden="true">▸</span>Managed the development process from system design and implementation to testing, debugging, and continuous improvement.</li>
                       </ul>
                     </div>
                   </div>
                 </div>
-              </div>
+              </article>
 
               <!-- Bottom border closer -->
-              <div style="border-bottom: 1px solid var(--border);"></div>
+              <div style="border-bottom:1px solid var(--border);" aria-hidden="true"></div>
 
-            </div><!-- /space-y-0 -->
-          </div><!-- /timeline reveal -->
+            </div>
+          </div>
         </div>
       </div>
     </div>
@@ -622,94 +436,112 @@
 
 
   <!-- ══════════════ PROJECTS ══════════════ -->
-  <section id="projects" class="relative py-16 sm:py-20 lg:py-28" style="border-top:1px solid var(--border-soft);">
+  <section id="projects" class="relative py-16 sm:py-20 lg:py-28" style="border-top:1px solid var(--border-soft);" aria-labelledby="projects-heading">
     <div class="max-w-screen-xl mx-auto px-5 sm:px-8 w-full">
       <div class="flex items-start gap-4 sm:gap-6">
 
-        <div class="hidden sm:flex flex-col items-center gap-2 mt-1 shrink-0">
+        <div class="hidden sm:flex flex-col items-center gap-2 mt-1 shrink-0" aria-hidden="true">
           <span class="t-accent text-xs font-mono">04</span>
           <span class="section-label">My Project</span>
         </div>
 
         <div class="flex-1">
           <div class="reveal">
-            <span class="sm:hidden t-accent text-xs font-mono mb-3 block">04 — My Project</span>
+            <span class="sm:hidden t-accent text-xs font-mono mb-3 block" aria-hidden="true">04 — My Project</span>
             <p class="t-accent text-xs tracking-widest uppercase mb-4 sm:mb-5">Selected Work</p>
-            <h2 class="font-black leading-tight mb-10 sm:mb-14 lg:mb-16 t-text" style="font-size: clamp(2rem, 6vw, 4.5rem);">
+            <h2 id="projects-heading" class="font-black leading-tight mb-10 sm:mb-14 lg:mb-16 t-text" style="font-size:clamp(2rem,6vw,4.5rem);">
               Real products,<br/><span class="t-accent">built from scratch.</span>
             </h2>
           </div>
 
           <div class="reveal" style="transition-delay:.1s;" id="project-list">
 
-            <!-- 01 -->
-            <div class="project-row" data-project="1">
-              <div class="project-header py-5 sm:py-7 flex items-center gap-3 sm:gap-4 px-1">
-                <span class="t-faint font-mono text-xs sm:text-sm w-6 shrink-0">01</span>
+            <!-- Project 01 -->
+            <article class="project-row" data-project="1">
+              <div class="project-header py-5 sm:py-7 flex items-center gap-3 sm:gap-4 px-1"
+                   role="button" aria-expanded="false" tabindex="0">
+                <span class="t-faint font-mono text-xs sm:text-sm w-6 shrink-0" aria-hidden="true">01</span>
                 <div class="flex-1 min-w-0">
                   <p class="t-accent text-xs tracking-widest uppercase mb-1">Company Profile</p>
                   <h3 class="t-text font-semibold text-base sm:text-lg lg:text-xl truncate">Tumpeng Mini</h3>
                   <p class="t-dim text-xs sm:text-sm leading-relaxed mt-1 hidden md:block">A company profile website for a kitchen featuring authentic Indonesian cuisine.</p>
                 </div>
                 <div class="hidden lg:flex flex-wrap gap-2 shrink-0"><span class="tag">React.js</span><span class="tag">Tailwind CSS</span></div>
-                <div class="project-arrow shrink-0"><svg width="13" height="13" viewBox="0 0 14 14" fill="none" aria-hidden="true"><path d="M2 7h10M8 3l4 4-4 4" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"/></svg></div>
+                <div class="project-arrow shrink-0" aria-hidden="true">
+                  <svg width="13" height="13" viewBox="0 0 14 14" fill="none"><path d="M2 7h10M8 3l4 4-4 4" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"/></svg>
+                </div>
               </div>
               <div class="project-detail">
                 <div class="pb-6 sm:pb-8 px-4 sm:px-6 lg:px-10 pt-5" style="border-top:1px solid var(--border);">
                   <p class="t-muted text-sm leading-relaxed mb-4 sm:mb-5">Tumpeng Mini is a company profile website that showcases a kitchen specialising in authentic Indonesian cuisine, particularly <em>tumpeng</em> — a traditional cone-shaped rice dish. The site highlights the brand's story, menu offerings, and ordering information in a warm, inviting layout.</p>
                   <div class="flex flex-wrap items-center gap-3">
                     <span class="tag">React.js</span><span class="tag">Tailwind CSS</span>
-                    <a href="https://tumpengmini.com/" target="_blank" rel="noopener noreferrer" class="visit-link">Visit site<svg width="12" height="12" viewBox="0 0 12 12" fill="none" aria-hidden="true"><path d="M2 10L10 2M4 2h6v6" stroke-width="1.3" stroke-linecap="round" stroke-linejoin="round"/></svg></a>
+                    <a href="https://tumpengmini.com/" target="_blank" rel="noopener noreferrer" class="visit-link">
+                      Visit site
+                      <svg width="12" height="12" viewBox="0 0 12 12" fill="none" aria-hidden="true"><path d="M2 10L10 2M4 2h6v6" stroke-width="1.3" stroke-linecap="round" stroke-linejoin="round"/></svg>
+                    </a>
                   </div>
                 </div>
               </div>
-            </div>
+            </article>
 
-            <!-- 02 -->
-            <div class="project-row" data-project="2">
-              <div class="project-header py-5 sm:py-7 flex items-center gap-3 sm:gap-4 px-1">
-                <span class="t-faint font-mono text-xs sm:text-sm w-6 shrink-0">02</span>
+            <!-- Project 02 -->
+            <article class="project-row" data-project="2">
+              <div class="project-header py-5 sm:py-7 flex items-center gap-3 sm:gap-4 px-1"
+                   role="button" aria-expanded="false" tabindex="0">
+                <span class="t-faint font-mono text-xs sm:text-sm w-6 shrink-0" aria-hidden="true">02</span>
                 <div class="flex-1 min-w-0">
                   <p class="t-accent text-xs tracking-widest uppercase mb-1">Company Profile &amp; Catalog</p>
                   <h3 class="t-text font-semibold text-base sm:text-lg lg:text-xl truncate">Floweria Blossom</h3>
                   <p class="t-dim text-xs sm:text-sm leading-relaxed mt-1 hidden md:block">A store profile and flower catalog website for a fresh flower shop.</p>
                 </div>
                 <div class="hidden lg:flex flex-wrap gap-2 shrink-0"><span class="tag">React.js</span><span class="tag">Tailwind CSS</span></div>
-                <div class="project-arrow shrink-0"><svg width="13" height="13" viewBox="0 0 14 14" fill="none" aria-hidden="true"><path d="M2 7h10M8 3l4 4-4 4" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"/></svg></div>
+                <div class="project-arrow shrink-0" aria-hidden="true">
+                  <svg width="13" height="13" viewBox="0 0 14 14" fill="none"><path d="M2 7h10M8 3l4 4-4 4" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"/></svg>
+                </div>
               </div>
               <div class="project-detail">
                 <div class="pb-6 sm:pb-8 px-4 sm:px-6 lg:px-10 pt-5" style="border-top:1px solid var(--border);">
                   <p class="t-muted text-sm leading-relaxed mb-4 sm:mb-5">Floweria Blossom is a store profile and catalog website designed to display information about the shop and the full catalog of flowers available for sale. It gives customers a clean, browsable experience to explore arrangements and place inquiries directly.</p>
                   <div class="flex flex-wrap items-center gap-3">
                     <span class="tag">React.js</span><span class="tag">Tailwind CSS</span>
-                    <a href="https://floweriablossom.com/" target="_blank" rel="noopener noreferrer" class="visit-link">Visit site<svg width="12" height="12" viewBox="0 0 12 12" fill="none" aria-hidden="true"><path d="M2 10L10 2M4 2h6v6" stroke-width="1.3" stroke-linecap="round" stroke-linejoin="round"/></svg></a>
+                    <a href="https://floweriablossom.com/" target="_blank" rel="noopener noreferrer" class="visit-link">
+                      Visit site
+                      <svg width="12" height="12" viewBox="0 0 12 12" fill="none" aria-hidden="true"><path d="M2 10L10 2M4 2h6v6" stroke-width="1.3" stroke-linecap="round" stroke-linejoin="round"/></svg>
+                    </a>
                   </div>
                 </div>
               </div>
-            </div>
+            </article>
 
-            <!-- 03 -->
-            <div class="project-row" data-project="3">
-              <div class="project-header py-5 sm:py-7 flex items-center gap-3 sm:gap-4 px-1">
-                <span class="t-faint font-mono text-xs sm:text-sm w-6 shrink-0">03</span>
+            <!-- Project 03 -->
+            <article class="project-row" data-project="3">
+              <div class="project-header py-5 sm:py-7 flex items-center gap-3 sm:gap-4 px-1"
+                   role="button" aria-expanded="false" tabindex="0">
+                <span class="t-faint font-mono text-xs sm:text-sm w-6 shrink-0" aria-hidden="true">03</span>
                 <div class="flex-1 min-w-0">
                   <p class="t-accent text-xs tracking-widest uppercase mb-1">Company Profile &amp; Internal</p>
                   <h3 class="t-text font-semibold text-base sm:text-lg lg:text-xl truncate">Karya Bina Consultant</h3>
                   <p class="t-dim text-xs sm:text-sm leading-relaxed mt-1 hidden md:block">Company profile and internal portal for a tax consultancy firm in Malang.</p>
                 </div>
                 <div class="hidden lg:flex flex-wrap gap-2 shrink-0"><span class="tag">React.js</span><span class="tag">Tailwind CSS</span></div>
-                <div class="project-arrow shrink-0"><svg width="13" height="13" viewBox="0 0 14 14" fill="none" aria-hidden="true"><path d="M2 7h10M8 3l4 4-4 4" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"/></svg></div>
+                <div class="project-arrow shrink-0" aria-hidden="true">
+                  <svg width="13" height="13" viewBox="0 0 14 14" fill="none"><path d="M2 7h10M8 3l4 4-4 4" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"/></svg>
+                </div>
               </div>
               <div class="project-detail">
                 <div class="pb-6 sm:pb-8 px-4 sm:px-6 lg:px-10 pt-5" style="border-top:1px solid var(--border);">
                   <p class="t-muted text-sm leading-relaxed mb-4 sm:mb-5">A dual-purpose platform for Karya Bina Consultant, a tax consultancy firm based in Malang. The public-facing side serves as a company profile presenting services and credentials. The internal side provides an employee portal to streamline day-to-day operational workflows within the firm.</p>
                   <div class="flex flex-wrap items-center gap-3">
                     <span class="tag">React.js</span><span class="tag">Tailwind CSS</span>
-                    <a href="https://www.karyabina.asia/" target="_blank" rel="noopener noreferrer" class="visit-link">Visit site<svg width="12" height="12" viewBox="0 0 12 12" fill="none" aria-hidden="true"><path d="M2 10L10 2M4 2h6v6" stroke-width="1.3" stroke-linecap="round" stroke-linejoin="round"/></svg></a>
+                    <a href="https://www.karyabina.asia/" target="_blank" rel="noopener noreferrer" class="visit-link">
+                      Visit site
+                      <svg width="12" height="12" viewBox="0 0 12 12" fill="none" aria-hidden="true"><path d="M2 10L10 2M4 2h6v6" stroke-width="1.3" stroke-linecap="round" stroke-linejoin="round"/></svg>
+                    </a>
                   </div>
                 </div>
               </div>
-            </div>
+            </article>
 
           </div>
         </div>
@@ -719,34 +551,52 @@
 
 
   <!-- ══════════════ CONTACT ══════════════ -->
-  <section id="contact" class="relative py-16 sm:py-20 lg:py-28" style="border-top:1px solid var(--border-soft);">
+  <section id="contact" class="relative py-16 sm:py-20 lg:py-28" style="border-top:1px solid var(--border-soft);" aria-labelledby="contact-heading">
     <div class="max-w-screen-xl mx-auto px-5 sm:px-8 w-full">
       <div class="grid grid-cols-1 lg:grid-cols-2 gap-12 lg:gap-16 items-start lg:items-center">
 
         <div class="reveal">
-          <span class="sm:hidden t-accent text-xs font-mono mb-3 block">05 — Contact</span>
+          <span class="sm:hidden t-accent text-xs font-mono mb-3 block" aria-hidden="true">05 — Contact</span>
           <p class="t-accent text-xs tracking-widest uppercase mb-5 sm:mb-6">Have a project in mind?</p>
-          <h2 class="font-black leading-tight mb-6 sm:mb-8 t-text" style="font-size: clamp(2rem, 6vw, 4rem);">
+          <h2 id="contact-heading" class="font-black leading-tight mb-6 sm:mb-8 t-text" style="font-size:clamp(2rem,6vw,4rem);">
             Let's build something<br/><span class="t-accent">meaningful.</span>
           </h2>
           <p class="t-dim text-sm leading-relaxed mb-8 sm:mb-10 max-w-sm">I'm always open to discussing new projects, creative ideas, or opportunities to create great software together.</p>
-          <a href="mailto:erlangga.golem@gmail.com" class="email-link">erlangga.golem@gmail.com<svg width="16" height="16" viewBox="0 0 16 16" fill="none" aria-hidden="true" class="shrink-0"><path d="M3 8h10M9 4l4 4-4 4" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"/></svg></a>
+          <a href="mailto:erlangga.golem@gmail.com" class="email-link">
+            erlangga.golem@gmail.com
+            <svg width="16" height="16" viewBox="0 0 16 16" fill="none" aria-hidden="true" class="shrink-0">
+              <path d="M3 8h10M9 4l4 4-4 4" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"/>
+            </svg>
+          </a>
         </div>
 
         <div class="reveal" style="transition-delay:.15s;">
           <div class="rounded-sm p-6 sm:p-8 w-full max-w-xs t-elevated" style="border:1px solid var(--border);">
-            <div class="flex items-center gap-3 mb-4 sm:mb-5"><div class="avail-dot"></div></div>
+            <div class="flex items-center gap-3 mb-4 sm:mb-5">
+              <div class="avail-dot" aria-hidden="true"></div>
+            </div>
             <p class="t-text text-sm mb-1">Currently available</p>
             <p class="t-dim text-sm mb-7 sm:mb-8">for new opportunities</p>
             <div class="flex items-center gap-3">
-              <a href="https://www.instagram.com/erlanggapmgks/" target="_blank" rel="noopener noreferrer" class="icon-btn" aria-label="Instagram">
-                <svg width="17" height="17" viewBox="0 0 24 24" fill="none" aria-hidden="true"><rect x="2" y="2" width="20" height="20" rx="5" ry="5" stroke-width="1.5"/><circle cx="12" cy="12" r="4" stroke-width="1.5"/><circle cx="17.5" cy="6.5" r="1" fill="#9CA3AF"/></svg>
+              <a href="https://www.instagram.com/erlanggapmgks/" target="_blank" rel="noopener noreferrer" class="icon-btn" aria-label="Instagram profile">
+                <svg width="17" height="17" viewBox="0 0 24 24" fill="none" aria-hidden="true">
+                  <rect x="2" y="2" width="20" height="20" rx="5" ry="5" stroke-width="1.5"/>
+                  <circle cx="12" cy="12" r="4" stroke-width="1.5"/>
+                  <circle cx="17.5" cy="6.5" r="1" fill="#9CA3AF"/>
+                </svg>
               </a>
-              <a href="https://www.linkedin.com/in/erlangga-dwi-ananda-pamungkas-119687235" target="_blank" rel="noopener noreferrer" class="icon-btn" aria-label="LinkedIn">
-                <svg width="17" height="17" viewBox="0 0 24 24" fill="none" aria-hidden="true"><path d="M16 8a6 6 0 016 6v7h-4v-7a2 2 0 00-2-2 2 2 0 00-2 2v7h-4v-7a6 6 0 016-6z" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"/><rect x="2" y="9" width="4" height="12" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"/><circle cx="4" cy="4" r="2" stroke-width="1.5"/></svg>
+              <a href="https://www.linkedin.com/in/erlangga-dwi-ananda-pamungkas-119687235" target="_blank" rel="noopener noreferrer" class="icon-btn" aria-label="LinkedIn profile">
+                <svg width="17" height="17" viewBox="0 0 24 24" fill="none" aria-hidden="true">
+                  <path d="M16 8a6 6 0 016 6v7h-4v-7a2 2 0 00-2-2 2 2 0 00-2 2v7h-4v-7a6 6 0 016-6z" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"/>
+                  <rect x="2" y="9" width="4" height="12" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"/>
+                  <circle cx="4" cy="4" r="2" stroke-width="1.5"/>
+                </svg>
               </a>
-              <a href="mailto:erlangga.golem@gmail.com" class="icon-btn" aria-label="Send email">
-                <svg width="17" height="17" viewBox="0 0 24 24" fill="none" aria-hidden="true"><path d="M4 4h16c1.1 0 2 .9 2 2v12c0 1.1-.9 2-2 2H4c-1.1 0-2-.9-2-2V6c0-1.1.9-2 2-2z" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"/><polyline points="22,6 12,13 2,6" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"/></svg>
+              <a href="mailto:erlangga.golem@gmail.com" class="icon-btn" aria-label="Send email to Erlangga">
+                <svg width="17" height="17" viewBox="0 0 24 24" fill="none" aria-hidden="true">
+                  <path d="M4 4h16c1.1 0 2 .9 2 2v12c0 1.1-.9 2-2 2H4c-1.1 0-2-.9-2-2V6c0-1.1.9-2 2-2z" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"/>
+                  <polyline points="22,6 12,13 2,6" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"/>
+                </svg>
               </a>
             </div>
           </div>
@@ -761,118 +611,21 @@
   <footer style="border-top:1px solid var(--border-soft);" class="py-6 sm:py-8">
     <div class="max-w-screen-xl mx-auto px-5 sm:px-8 flex items-center justify-between gap-4">
       <a href="#home" class="flex items-center gap-2 shrink-0" aria-label="Back to home">
-        <span class="t-accent font-bold text-sm">&lt;/&gt;</span>
+        <span class="t-accent font-bold text-sm" aria-hidden="true">&lt;/&gt;</span>
         <span class="font-black text-sm tracking-widest uppercase t-text">ERLANGGA.</span>
       </a>
       <p class="t-faint text-xs tracking-widest uppercase hidden md:block text-center">Designed &amp; Built With Intent — 2026</p>
       <a href="#home" class="t-faint text-xs tracking-widest uppercase hover:opacity-70 transition-opacity duration-200 flex items-center gap-2 shrink-0" aria-label="Back to top">
         <span class="hidden sm:inline">Back to top</span>
-        <svg width="12" height="12" viewBox="0 0 12 12" fill="none" aria-hidden="true"><path d="M6 10V2M2 6l4-4 4 4" stroke="currentColor" stroke-width="1.2" stroke-linecap="round" stroke-linejoin="round"/></svg>
+        <svg width="12" height="12" viewBox="0 0 12 12" fill="none" aria-hidden="true">
+          <path d="M6 10V2M2 6l4-4 4 4" stroke="currentColor" stroke-width="1.2" stroke-linecap="round" stroke-linejoin="round"/>
+        </svg>
       </a>
     </div>
   </footer>
 
+  <!-- ══ JavaScript ══ -->
+  <script src="js/main.js"></script>
 
-  <!-- ══════════════ JAVASCRIPT ══════════════ -->
-  <script>
-    // ── Theme: dark by default ───────────────────────────────
-    (function initTheme() {
-      const saved = localStorage.getItem('theme');
-      if (saved === 'light') {
-        document.documentElement.classList.add('light');
-      }
-      // No saved preference → stay dark (default)
-    })();
-
-    const themeToggle = document.getElementById('theme-toggle');
-    themeToggle.addEventListener('click', () => {
-      const isLight = document.documentElement.classList.toggle('light');
-      localStorage.setItem('theme', isLight ? 'light' : 'dark');
-    });
-
-    // ── Navbar shrink on scroll ──────────────────────────────
-    const navbar = document.getElementById('navbar');
-    window.addEventListener('scroll', () => {
-      if (window.scrollY > 60) {
-        navbar.style.padding = '12px 0';
-        navbar.style.background = 'var(--nav-bg)';
-        navbar.style.backdropFilter = 'blur(16px)';
-        navbar.style.WebkitBackdropFilter = 'blur(16px)';
-        navbar.style.borderBottom = '1px solid var(--border)';
-      } else {
-        navbar.style.padding = '24px 0';
-        navbar.style.background = 'transparent';
-        navbar.style.backdropFilter = 'none';
-        navbar.style.WebkitBackdropFilter = 'none';
-        navbar.style.borderBottom = 'none';
-      }
-    }, { passive: true });
-
-    // ── Active nav on scroll ─────────────────────────────────
-    const sections = document.querySelectorAll('section[id]');
-    const navLinks = document.querySelectorAll('.nav-link[data-section]');
-    function setActiveNav() {
-      let current = '';
-      sections.forEach(s => { if (window.scrollY >= s.offsetTop - 120) current = s.id; });
-      navLinks.forEach(link => {
-        link.classList.toggle('active', link.dataset.section === current);
-      });
-    }
-    window.addEventListener('scroll', setActiveNav, { passive: true });
-    setActiveNav();
-
-    // ── Mobile menu ──────────────────────────────────────────
-    const hamburger = document.getElementById('hamburger');
-    const mobileMenu = document.getElementById('mobile-menu');
-    const spans = hamburger.querySelectorAll('span');
-    function closeMobileMenu() {
-      mobileMenu.classList.remove('open');
-      spans.forEach(s => { s.style.transform = ''; s.style.opacity = ''; s.style.width = ''; });
-      hamburger.setAttribute('aria-expanded', 'false');
-    }
-    hamburger.addEventListener('click', () => {
-      if (mobileMenu.classList.contains('open')) { closeMobileMenu(); return; }
-      mobileMenu.classList.add('open');
-      hamburger.setAttribute('aria-expanded', 'true');
-      spans[0].style.transform = 'rotate(45deg) translate(4px,4px)';
-      spans[1].style.opacity = '0';
-      spans[2].style.transform = 'rotate(-45deg) translate(3px,-3px)';
-      spans[2].style.width = '20px';
-    });
-    mobileMenu.querySelectorAll('a').forEach(a => a.addEventListener('click', closeMobileMenu));
-    document.addEventListener('click', e => {
-      if (!hamburger.contains(e.target) && !mobileMenu.contains(e.target)) closeMobileMenu();
-    });
-
-    // ── Project accordion ────────────────────────────────────
-    document.querySelectorAll('.project-row').forEach(row => {
-      row.querySelector('.project-header').addEventListener('click', () => {
-        const isOpen = row.classList.contains('open');
-        document.querySelectorAll('.project-row').forEach(r => r.classList.remove('open'));
-        if (!isOpen) row.classList.add('open');
-      });
-    });
-
-    // ── Experience accordion ──────────────────────────────────
-    document.querySelectorAll('.exp-entry').forEach(entry => {
-      entry.querySelector('.exp-header').addEventListener('click', () => {
-        const isOpen = entry.classList.contains('open');
-        document.querySelectorAll('.exp-entry').forEach(e => e.classList.remove('open'));
-        if (!isOpen) entry.classList.add('open');
-      });
-    });
-
-    // ── Scroll reveal ────────────────────────────────────────
-    const reveals = document.querySelectorAll('.reveal');
-    const observer = new IntersectionObserver(entries => {
-      entries.forEach(entry => {
-        if (entry.isIntersecting) { entry.target.classList.add('visible'); observer.unobserve(entry.target); }
-      });
-    }, { threshold: 0.1 });
-    reveals.forEach(el => {
-      if (el.getBoundingClientRect().top < window.innerHeight) el.classList.add('visible');
-      else observer.observe(el);
-    });
-  </script>
 </body>
 </html>
